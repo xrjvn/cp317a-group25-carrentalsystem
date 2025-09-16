@@ -21,3 +21,9 @@ The system will be developed following the **Scrum methodology** with tracked co
 5. Ensure secure storage of customer data
 
 ## Repository Structure
+```
+/docs      → Project documentation (milestones, writeups, PDFs)
+/backlog   → Product backlog files (draft + sprint planning)
+/blog      → Team blog (Excel updates throughout the term)
+/src       → Source code (to be developed later)
+```
