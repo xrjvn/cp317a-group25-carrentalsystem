@@ -8,10 +8,10 @@ The system will be developed following the **Scrum methodology** with tracked co
 
 ## Team Members
 - Arjun Singh
-- Sam Oreskovic
-- Khush Patel
 - Connor Davison
 - Hayden Gdanski
+- Khush Patel
+- Sam Oreskovic
 
 ## Objectives
 1. Allow customers to search for available cars by type/date.
