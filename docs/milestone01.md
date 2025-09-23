@@ -1,24 +1,36 @@
 # CP317A – Milestone 01  
 **Group 25 – Car Rental System**  
 
-## 1. Abstract
-Our project is a **Car Rental System** that allows customers to search, reserve, and manage car rentals through a user-friendly platform. The system also provides rental managers with tools to monitor daily rentals, track utilization of cars, and generate reports.
+## Cover Page
+- **Course Code:** CP317A – Software Engineering
+- **Project Title:** Car Rental System
+- **Group ID:** Group 25
+- **Team Members:**
+  - Arjun Singh
+  - Connor Davison
+  - Hayden Gdanski
+  - Khush Patel
+  - Sam Oreskovic
 
-This project is important because many rental companies still use outdated manual processes that cause inefficiency and inconvenience. Our solution digitizes the process, offering customers greater convenience and enabling businesses to make data-driven decisions.
+## 1. Abstract
+Our project is a **Car Rental System** that allows customers to search, reserve, and manage car rentals through a user-friendly platform. The system also provides rental managers with tools to monitor daily rentals, view utilization, and generate reports.
+
+This project is important because many rental companies still use outdated manual processes that cause inefficiency and inconvenience. Our solution digitizes the process, reducing manual work, improving data accuracy, and offering customers greater convenience.
 
 
 ## 2. Project Description & Objectives
-
 ### Description
-
+The Car Rental System provides two main user experiences:
+1. **Manager portal:** monitor utilization and rentals, and access reporting (popular car types, busiest days, etc.).
+2. **Customer portal:** browse cars by category/date, reserve/cancel/modify bookings, view rental history.
 
 ### Objectives
-1. 
-2. 
-3. 
-4.   
-5. 
-6. 
+1. Allow customers to search for available cars by category, date, and rental period.
+2. Enable customers to reserve, modify, or cancel bookings.
+3. Provide customers with access to rental history.
+4. Allow managers to monitor daily rentals and vehicle utilization.
+5. Generate reports on popular car types and customer preferences.
+6. Ensure secure storage and access control for customer and booking data.
 
 
 ## 3. Initial Product Backlog (Draft)
@@ -39,8 +51,8 @@ This project is important because many rental companies still use outdated manua
 1. **Data Privacy** – Customer information and booking data must be stored securely. We will use encryption and authentication to protect personal data.
 2. **Accessibility** – The platform will be designed to support accessibility features such as screen reader compatibility and clear navigation to ensure inclusivity.
 3. **Fairness** – The system will ensure fair access for all customers without bias in pricing, availability, or services.
+4. **Data Minimization & Retention:** We will collect only necessary data for bookings and define retention windows for old records/logs to reduce risk exposure.
 
 
 ## 5. Team Blog
-The team blog is maintained separately as an **Excel file** (``).
-It contains team information that will be updated regularly throughout the semester to track progression.
+The team blog is maintained separately as an **Excel file** (`/blog/blog.xlsx`). We confirm it contains team information that will be updated regularly throughout the term to track progress, as required.
