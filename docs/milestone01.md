@@ -55,4 +55,4 @@ The Car Rental System provides two main user experiences:
 
 
 ## 5. Team Blog
-The team blog is maintained separately as an **Excel file** (`/blog/blog.xlsx`). We confirm it contains team information that will be updated regularly throughout the term to track progress, as required.
+The team blog is maintained separately as an **Excel file** (`/blog/Blog.xlsx`). We confirm it contains team information that will be updated regularly throughout the term to track progress, as required.
