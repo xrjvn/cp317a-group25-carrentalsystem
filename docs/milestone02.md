@@ -23,7 +23,7 @@ This milestone expands on the previous deliverable by refining requirements, int
 The initial backlog from Milestone 01 has been enhanced to include **Story Points, Priority, Sprint Assignment, Status, Conversation**, and **Confirmation (Acceptance Criteria)**.  
 It is maintained in **`ProductBacklog.xlsx`** and summarized below.
 
-### 🧩 Backlog Summary (Excerpt)
+### Backlog Summary (Excerpt)
 | Story ID | Story Title | Story Points | Priority | Sprint Assignment | Status |
 |-----------|-------------|--------------|-----------|-------------------|---------|
 | UI-1 | Search Cars | 5 | High | Sprint 1 | Not Started |
@@ -95,15 +95,15 @@ Include arrows or labels indicating navigation flow between screens. Screenshots
 
 ## 6) Team Blog (Update)
 The team continues to use the Excel Blog file (**`Blog.xlsx`**) to track weekly activities, meetings, and individual contributions.  
-New entries since Milestone 01 reflect time spent on requirement refinement, backlog expansion, and design sketch development.  
+New entries since Milestone 01 reflect time spent on requirement refinement, backlog expansion, and design sketch development.
 
 ---
 
 ## 7) Submission Checklist
 Before submitting Milestone 02, ensure the following files are uploaded to MyLearningSpace:  
-- ✅ `Group25-Milestone02.pdf` (this document)  
-- ✅ `ProductBacklog.xlsx` (expanded backlog)  
-- ✅ `Blog.xlsx` (updated blog)  
+- `Group25-Milestone02.pdf` (this document)  
+- `Group25-ProductBacklog.xlsx` (expanded backlog)  
+- `Blog.xlsx` (updated blog)  
 
 **Deadline:** Sunday, October 12, 2025 @ 11:59 PM.  
 
