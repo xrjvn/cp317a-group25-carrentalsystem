@@ -94,7 +94,7 @@ Include arrows or labels indicating navigation flow between screens. Screenshots
 ---
 
 ## 6) Team Blog (Update)
-The team continues to use the Excel Blog file (**`Group25-Blog.xlsx`**) to track weekly activities, meetings, and individual contributions.  
+The team continues to use the Excel Blog file (**`Blog.xlsx`**) to track weekly activities, meetings, and individual contributions.  
 New entries since Milestone 01 reflect time spent on requirement refinement, backlog expansion, and design sketch development.  
 
 ---
@@ -103,7 +103,7 @@ New entries since Milestone 01 reflect time spent on requirement refinement, bac
 Before submitting Milestone 02, ensure the following files are uploaded to MyLearningSpace:  
 - ✅ `Group25-Milestone02.pdf` (this document)  
 - ✅ `ProductBacklog.xlsx` (expanded backlog)  
-- ✅ `Group25-Blog.xlsx` (updated blog)  
+- ✅ `Blog.xlsx` (updated blog)  
 
 **Deadline:** Sunday, October 12, 2025 @ 11:59 PM.  
 
