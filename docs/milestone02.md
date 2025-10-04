@@ -1,4 +1,4 @@
-# CP317A – Milestone 012 
+# CP317A – Milestone 02 
 **Group 25 – Car Rental System**  
 
 ## Cover Page
