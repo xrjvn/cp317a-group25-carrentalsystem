@@ -58,6 +58,7 @@ The complete backlog with full user stories and details is included in the Excel
 ### Non-Functional Requirements (2–5)
 1. Customers expect quick responses when browsing and renting cars
 2. App will be very intuitive for the user
+3. App can handle increase user load
 
 ---
 
