@@ -66,11 +66,11 @@ The complete backlog with full user stories and details is included in the Excel
 ## 4) Ethical Considerations (Updated)
 Ethical principles from Milestone 01 were expanded to address the system’s growing scope:  
 
-1. /
-2. /
-3. /
-4. /
-5. /
+1. Data Privacy – Customer information and booking data must be stored securely. We will use encryption and authentication to protect personal data.
+2. Accessibility – The platform will be designed to support accessibility features such as screen reader compatibility and clear navigation to ensure inclusivity.
+3. Fairness – The system will ensure fair access for all customers without bias in pricing, availability, or services.
+4. Data Minimization & Retention: We will collect only necessary data for bookings and define retention windows for old records/logs to reduce risk exposure.
+5. 
 
 ---
 
