@@ -67,16 +67,7 @@ Ethical principles from Milestone 01 were expanded to address the system’s gro
 ---
 
 ## 5) Initial Design Sketches
-*(For submission, attach or embed sketches below. They may be hand-drawn and scanned or created digitally.)*  
-
-**Main Screens to Include:**
-1. **Login Screen:** Username + password fields and “Forgot Password” option.  
-2. **Customer Dashboard:** Search bar, filters (car type/date), and list of available cars.  
-3. **Reservation Form:** Pickup/return dates, vehicle details, payment section.  
-4. **Manager Dashboard:** Summary cards for daily rentals and fleet utilization.  
-5. **Reports Screen:** Graphs showing popular car types and rental trends.  
-
-Include arrows or labels indicating navigation flow between screens. Screenshots or images can be attached as appendix pages in the PDF.  
+  
 
 ---
 
