@@ -55,11 +55,13 @@ The complete backlog with full user stories and details is included in the Excel
 4. Car Selection System (Make, Model, Year, Etc.)
 5. User Rental History
 6. Record/License Database + Data Protection
+7. User Support
 
 ### Non-Functional Requirements (2–5)
 1. Customers expect quick responses when browsing and renting cars
 2. App will be very intuitive for the user
 3. App can handle increase user load
+4. FAQ
 
 ---
 
