@@ -48,7 +48,12 @@ The complete backlog with full user stories and details is included in the Excel
 
 ## 3) Requirements Refinement
 ### Functional Requirements (5–10)
-1. 
+1. Interactive Map System
+2. Payment System
+3. User Accounts / Logins
+4. Car Selection System (Make, Model, Year, Etc.)
+5. User Rental History
+6. Record/License Database + Data Protection
 
 ### Non-Functional Requirements (2–5)
 1. Customers expect quick responses when browsing and renting cars
