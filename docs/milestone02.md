@@ -21,7 +21,7 @@ This milestone expands on the previous deliverable by refining requirements, int
 
 ## 2) Product Backlog (Expanded)
 The initial backlog from Milestone 01 has been enhanced to include **Story Points, Priority, Sprint Assignment, Status, Conversation**, and **Confirmation (Acceptance Criteria)**.  
-It is maintained in **`ProductBacklog.xlsx`** and summarized below.
+It is maintained in **`Group25-ProductBacklog.xlsx`** and summarized below.
 
 ### Backlog Summary (Excerpt)
 | Story ID | Story Title | Story Points | Priority | Sprint Assignment | Status |
@@ -42,7 +42,7 @@ It is maintained in **`ProductBacklog.xlsx`** and summarized below.
 - **Conversation / Confirmation:** Provide notes and acceptance criteria for each story to align team understanding and testing criteria.  
 - **Status:** Initially “Not Started” for all stories; to be updated in later milestones.  
 
-The complete backlog with full user stories and details is included in the Excel file **`ProductBacklog.xlsx`**.
+The complete backlog with full user stories and details is included in the Excel file **`Group25-ProductBacklog.xlsx`**.
 
 ---
 
