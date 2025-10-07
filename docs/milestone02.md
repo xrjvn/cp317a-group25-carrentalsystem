@@ -11,6 +11,7 @@
   - Hayden Gdanski
   - Khush Patel
   - Sam Oreskovic
+  - Andrew Opris
 
 ## 1) Abstract
 The **Car Rental System** project enables customers to search, reserve, and manage vehicle rentals through an intuitive interface, while giving managers tools to view daily activity and generate fleet-usage reports.  
