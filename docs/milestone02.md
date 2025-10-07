@@ -51,7 +51,7 @@ The complete backlog with full user stories and details is included in the Excel
 1. 
 
 ### Non-Functional Requirements (2–5)
-1.
+1. Customers expect quick responses when browsing and renting cars
 
 ---
 
