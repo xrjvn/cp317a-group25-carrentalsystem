@@ -48,34 +48,21 @@ The complete backlog with full user stories and details is included in the Excel
 
 ## 3) Requirements Refinement
 ### Functional Requirements (5–10)
-1. **User Registration / Login:** System must support secure account creation and login with hashed credentials.  
-2. **Car Search:** Customers must be able to filter available cars by type, date, and price.  
-3. **Reservation Management:** Customers can reserve, cancel, or modify bookings through their dashboard.  
-4. **Payment Processing:** Reservations require payment confirmation using secure methods (placeholder gateway for prototype).  
-5. **Rental History:** Users must view past bookings and receipts.  
-6. **Reporting Dashboard:** Managers can view daily rentals and generate usage reports.  
-7. **User Roles & Access:** System must differentiate permissions between customers, managers, and admins.  
-8. **Data Persistence:** All records stored in a relational database with unique IDs and referential integrity.  
-9. **Session Handling:** Users remain logged in for a defined duration with timeout for inactivity.  
-10. **Search Validation:** Date inputs and availability queries must be validated to prevent conflicts.
+1. 
 
 ### Non-Functional Requirements (2–5)
-1. **Performance:** System should return search results within 2 seconds for 1000+ entries.  
-2. **Usability:** UI must be intuitive and accessible (contrast ratio ≥ 4.5:1, keyboard navigation).  
-3. **Reliability:** Critical functions (e.g., booking) should achieve ≥ 99% success rate in testing.  
-4. **Security:** Passwords hashed using SHA-256 (or better); data transmission secured via HTTPS.  
-5. **Scalability:** Architecture should support future integration with third-party APIs (e.g., payment or GPS services).  
+1.
 
 ---
 
 ## 4) Ethical Considerations (Updated)
 Ethical principles from Milestone 01 were expanded to address the system’s growing scope:  
 
-1. **Data Privacy & Security:** Customer data must be stored with encryption, and access restricted by role. Backups are protected and anonymized.  
-2. **Fairness & Transparency:** Pricing and availability algorithms will not favor specific users or locations. All users see the same offers under identical criteria.  
-3. **Accessibility:** The interface will be tested against WCAG guidelines to ensure users with visual or motor impairments can interact easily.  
-4. **Data Retention Policy:** Customer records are retained only as long as legally necessary and then securely deleted.  
-5. **User Consent:** All data collection points (e.g., account creation) will include explicit consent language.  
+1. /
+2. /
+3. /
+4. /
+5. /
 
 ---
 
