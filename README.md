@@ -22,6 +22,7 @@ The system will be developed following the **Scrum methodology** with tracked co
 
 ## Repository Structure
 ```
+/app       → app itself
 /docs      → Project documentation (milestones, writeups, PDFs)
 /backlog   → Product backlog files (draft + sprint planning)
 /blog      → Team blog (Excel updates throughout the term)
