@@ -70,8 +70,8 @@ The complete backlog with full user stories and details is included in the Excel
 1. **Data Privacy** – Customer information and booking data must be stored securely. We will use encryption and authentication to protect personal data. As well as role based access where only authorized users will have access to sensitive information.
 - Implementation in Backlog:
     - **SEC-1 Secure Login** – Use strong password encryption, two-factor authentication, and HTTPS.
-    - **SEC-2 Data Encryption** – *As a system administrator, I want all personal and payment data encrypted so that customer privacy is protected even if data is compromised.*
-    - **SEC-3 Role-Based Access Control** – *As a manager, I want limited access to customer data so that privacy is maintained and only necessary information is viewable.*
+    - **Data Encryption** – *As a system administrator, I want all personal and payment data encrypted so that customer privacy is protected even if data is compromised.*
+    - **Role-Based Access Control** – *As a manager, I want limited access to customer data so that privacy is maintained and only necessary information is viewable.*
 
 
 
