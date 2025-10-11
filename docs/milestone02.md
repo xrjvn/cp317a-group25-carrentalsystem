@@ -77,7 +77,7 @@ The complete backlog with full user stories and details is included in the Excel
 
 2. **Accessibility** – The platform will be designed to support accessibility features such as screen reader compatibility and clear navigation to ensure inclusivity.
 - Implementation in Backlog:
-    - **UI-1 – UI-5** (Customer Features): All front-end components follow **WCAG 2.1** accessibility standards.
+    - **UI-1 – UI-6** (Customer Features): All front-end components follow **WCAG 2.1** accessibility standards.
    
 
 
