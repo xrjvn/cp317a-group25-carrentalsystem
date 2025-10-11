@@ -47,30 +47,13 @@ The Car Rental System provides two main user experiences:
 | SEC-1    | Secure Login         | As a customer, I want to log in securely so that my personal data is protected. |
 
 
-## 4. Ethical Considerations
-1. **Data Privacy** – Customer information and booking data must be stored securely. We will use encryption and authentication to protect personal data. As well as role based access where only authorized users will have access to sensitive information.
-- Implementation in Backlog:
-    - **SEC-1 Secure Login** – Use strong password encryption, two-factor authentication, and HTTPS.
-    - **SEC-2 Data Encryption** – *As a system administrator, I want all personal and payment data encrypted so that customer privacy is protected even if data is compromised.*
-    - **SEC-3 Role-Based Access Control** – *As a manager, I want limited access to customer data so that privacy is maintained and only necessary information is viewable.*
+## 4) Ethical Considerations (Updated)
+Ethical principles from Milestone 01 were expanded to address the system’s growing scope:  
 
-
-
-2. **Accessibility** – The platform will be designed to support accessibility features such as screen reader compatibility and clear navigation to ensure inclusivity.
-- Implementation in Backlog:
-    - **UI-1 – UI-5** (Customer Features): All front-end components follow **WCAG 2.1** accessibility standards.
-   
-
-
-
-3. **Fairness** – The system will ensure fair access for all customers without bias in pricing, availability, or services.
-  - Implementation in Backlog:
-    - **UI-1 Search Cars** – Ensure search results are unbiased and sorted consistently (e.g., by availability or price).
-    
-
-4. **Data Minimization & Retention:** We will collect only necessary data for bookings and define retention windows for old records/logs to reduce risk exposure.
-- Implementation in Backlog:
-    - **REP-1 / REP-2 Reports** – Ensure aggregated data reporting without revealing identifiable customer information.
+1. Data Privacy – Customer information and booking data must be stored securely. We will use encryption and authentication to protect personal data.
+2. Accessibility – The platform will be designed to support accessibility features such as screen reader compatibility and clear navigation to ensure inclusivity.
+3. Fairness – The system will ensure fair access for all customers without bias in pricing, availability, or services.
+4. Data Minimization & Retention: We will collect only necessary data for bookings and define retention windows for old records/logs to reduce risk exposure.
 
 
 ## 5. Team Blog
