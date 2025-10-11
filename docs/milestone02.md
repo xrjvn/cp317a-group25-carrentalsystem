@@ -77,7 +77,7 @@ Ethical principles from Milestone 01 were expanded to address the system’s gro
 ---
 
 ## 5) Initial Design Sketches
-  
+  https://www.figma.com/design/SkGGo4SPoSIFhOYltSwDCy/carrentalsystem?node-id=0-1&t=CeDHrOhTAPisrnbz-1
 
 ---
 
