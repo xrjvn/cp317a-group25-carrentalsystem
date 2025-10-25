@@ -44,7 +44,7 @@ They form the foundation of the system — every feature onward (modifications, 
 
 ### Arjun Singh – SEC-1 (Secure Login)
 **Overview:**
-Created a Next.js login prototype in `/app/login/page.tsx` to simulate basic authentication.
+Created a login prototype in `/app/login/page.tsx` to simulate basic authentication.
 The form validates user input and displays login status messages locally.
 No backend yet; future sprints will take that on.
 
