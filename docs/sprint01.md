@@ -99,7 +99,7 @@ No backend yet; future sprints will take that on.
 ## **4. OVERALL Testing & Review**
 | Story ID | Test Description | Method | Result | Verified By |
 |-----------|------------------|---------|---------|--------------|
-| SEC-1 | Login accepts valid credentials | Manual UI test | Pass | TBD |
+| SEC-1 | Login accepts valid credentials | Manual UI test | Pending | TBD |
 | UI-1 | Search returns cars by filter | Manual UI test | Pending | TBD |
 | UI-2 | Reservation stores temporary booking | Manual UI test | Pending | TBD |
 
