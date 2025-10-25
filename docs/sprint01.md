@@ -96,7 +96,7 @@ No backend yet; future sprints will take that on.
 
 ---
 
-## **4. Testing & Review**
+## **4. OVERALL Testing & Review**
 | Story ID | Test Description | Method | Result | Verified By |
 |-----------|------------------|---------|---------|--------------|
 | SEC-1 | Login accepts valid credentials | Manual UI test | Pass | TBD |
