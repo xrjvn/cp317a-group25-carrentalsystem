@@ -56,6 +56,7 @@ No backend yet; future sprints will take that on.
 **Code Snippet:**
 (/CODE GOES HERE/)
 
+---
 
 ### Person 2 & Person 3 – UI-1 (Search Cars)
 **Overview:**
@@ -67,6 +68,7 @@ No backend yet; future sprints will take that on.
 **Code Snippet:**
 (/CODE GOES HERE/)
 
+---
 
 ### Person 4 & Person 5 – UI-2 (Reserve Car)
 **Overview:**
@@ -78,6 +80,7 @@ No backend yet; future sprints will take that on.
 **Code Snippet:**
 (/CODE GOES HERE/)
 
+---
 
 ### Person 6 – Testing & Review
 
@@ -91,15 +94,40 @@ No backend yet; future sprints will take that on.
 | UI-1 | Person 6 | Pass or Fail or Pending |  |
 | UI-2 | Person 6 | Pass or Fail or Pending |  |
 
+---
 
+## **4. Testing & Review**
+| Story ID | Test Description | Method | Result | Verified By |
+|-----------|------------------|---------|---------|--------------|
+| SEC-1 | Login accepts valid credentials | Manual UI test | Pass | TBD |
+| UI-1 | Search returns cars by filter | Manual UI test | Pending | TBD |
+| UI-2 | Reservation stores temporary booking | Manual UI test | Pending | TBD |
 
+---
 
+## **5. Sprint Review & Reflection**
+**Completed:**  
+- /
+- /
+- /
 
+**Next Sprint:**  
+- Add real database connections
+- Finalize search and reservation UIs
+- Implement registration and manager roles
 
+---
 
+## **6. Team Blog (Update)**
+Team continues to use **Group25-Blog.xlsx** to log sprint work.
+Each member should record tasks, meeting notes, and estimated hours.
 
+---
 
+## **7. Submission Checklist**
+Before submitting Sprint 01, ensure the following files are uploaded:
+- `Group25-Sprint01.pdf` (this document)
+- `Group25-ProductBacklog.xlsx` (updated backlog)
+- `Group25-Blog.xlsx` (updated log)
 
-
-
-
+**Deadline:** Sunday, October 26, 2025 @ 11:59 PM
