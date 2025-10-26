@@ -60,8 +60,15 @@ export default function ReservePage() {
                     <div className="bg-gray-800 p-4 rounded-xl mb-6 max-w-md w-full">
                         <h2 className="text-lg font-semibold mb-2 text-blue-400">Selected Car:</h2>
                         <div className="flex items-center space-x-4">
-                            <div className="w-16 h-16 bg-gray-600 rounded-lg flex items-center justify-center">
-                                <span className="text-xs text-gray-400">🚗</span>
+                            {/* Have the car's actual image show instead of emoji */}
+                            <div className="w-24 h-16 rounded-lg overflow-hidden">
+                                <Image
+                                    src={selectedCar.image}
+                                    alt={`${selectedCar.make} ${selectedCar.model}`}
+                                    width={128}
+                                    height={128}
+                                    className="object-cover w-full h-full"
+                                />
                             </div>
                             <div>
                                 <h3 className="font-semibold">{selectedCar.year} {selectedCar.make} {selectedCar.model}</h3>

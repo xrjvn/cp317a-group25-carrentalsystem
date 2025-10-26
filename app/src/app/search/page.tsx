@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { mockCars, carTypes, locations, fuelTypes, transmissions, Car } from '../data/mockCars';
 
 export default function SearchPage() {
@@ -242,8 +243,13 @@ export default function SearchPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {searchResults.map((car) => (
                   <div key={car.id} className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-                    <div className="h-48 bg-gray-200 flex items-center justify-center">
-                      <span className="text-gray-500">Car Image</span>
+                    <div className="h-48 relative">
+                      <Image
+                        src={car.image}
+                        alt={`${car.make} ${car.model}`}
+                        fill
+                        className="object-cover"
+                      />
                     </div>
                     <div className="p-4">
                       <div className="flex justify-between items-start mb-2">
