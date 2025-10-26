@@ -290,7 +290,7 @@ export default function ReservePage() {
 ## **5. Sprint Review & Reflection**
 **Completed:**  
 - SEC-1 (Secure Login) implemented and tested successfully. Page renders correctly on localhost and validates user input.
-- /
+- UI-2 (Search) Succesfully implimented and tested. Page renders cars filtered by users search preference. Reserve button linked to reserve page with car id selected
 - UI-2 (Reserve) successfully implimented and tested. Page renders reserve UI and lists complete reservations at the bottom of the page.
 
 **Next Sprint:**  
