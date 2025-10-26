@@ -283,7 +283,7 @@ export default function ReservePage() {
 |-----------|------------------|---------|---------|--------------|
 | SEC-1 | Login accepts valid credentials | Manual UI test | Complete | Arjun Singh |
 | UI-1 | Search returns cars by filter | Manual UI test | Pending | TBD |
-| UI-2 | Reservation stores temporary booking | Manual UI test | Pending | TBD |
+| UI-2 | Reservation stores temporary booking | Manual UI test | Complete | Sam Oreskovic |
 
 ---
 
@@ -291,7 +291,7 @@ export default function ReservePage() {
 **Completed:**  
 - SEC-1 (Secure Login) implemented and tested successfully. Page renders correctly on localhost and validates user input.
 - /
-- /
+- UI-2 (Reserve) successfully implimented and tested. Page renders reserve UI and lists complete reservations at the bottom of the page.
 
 **Next Sprint:**  
 - Add backend authentication and user sessions. Connect login to profile and reservation pages
