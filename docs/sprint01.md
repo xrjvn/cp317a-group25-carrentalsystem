@@ -105,11 +105,16 @@ export default function LoginPage() {
 ### Khush Patel & Hayden Gdanski – UI-1 (Search Cars)
 **Overview:**
 - Developed a sample dataset containing a list of 8 different cars that include details like make,model,year, price, features etc.
-- Additi
-- 
+- Additionally worked on a comprehensive filter system; Pickup & return dates (date inputs) Car type, location, fuel type, transmission (dropdown selects) maximum price per day (number input)
+- State management using React hooks (searchFilters, searchResults)
+- User interface features (search/clear buttons, Results counter showing number of cars found)
+- Car display cards made with optimized Next.js Image component
+- Styling used Tailwind CSS 
+
 **Files Modified:**
-app/src/app/search/page.tsx
-app/data/mockCars.ts
+- /app/search/page.tsx
+- app/data/mockCars.ts
+
 **Code Snippet:**
 ```tsx
 'use client';
@@ -614,6 +619,8 @@ export default function ReservePage() {
 - Implement registration and manager roles
 - Fix the Search UI layout, and feature placements. Make it more accesible.
 - Possibly include some UI developed componenets for the dropdowns, menu, button interactions
+- Make all components responsive, better situated for users. 
+- Give clarity to design (ie. buttons where they should be, follow a user-flow structure)
 
 ---
 
