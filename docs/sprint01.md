@@ -34,7 +34,7 @@ They form the foundation of the system — every feature onward (modifications, 
 ## 2. Sprint Backlog
 | Story ID | Story Title | Points | Priority | Assigned To | Tasks | Status |
 |-----------|-------------|---------|-----------|--------------|--------|---------|
-| SEC-1 | Secure Login | 8 | High | Arjun Singh | Implement login page with mock auth and validation | In Progress |
+| SEC-1 | Secure Login | 8 | High | Arjun Singh | Implement login page with mock auth and validation | Completed |
 | UI-1 | Search Cars | 5 | High | Person 2 & Person 3 | Create search form + results page with mock data | In Progress |
 | UI-2 | Reserve Car | 8 | High | Person 4 & Person 5 | Build booking form and temporary storage logic | In Progress |
 
@@ -44,12 +44,14 @@ They form the foundation of the system — every feature onward (modifications, 
 
 ### Arjun Singh – SEC-1 (Secure Login)
 **Overview:**
-Created a login prototype in `/app/login/page.tsx` to simulate basic authentication.
-The form validates user input and displays login status messages locally.
+Developed a functional login prototype in `/app/login/page.tsx` to simulate basic authentication.
+The form validates user credentials and displays login status messages locally.
+A mock authentication check validates `testuser` / `test123`.
 No backend yet; future sprints will take that on.
 
 **Files Modified:**  
 - `/app/login/page.tsx` – Login component
+- Verified functionality locally at [http://localhost:3000/login](http://localhost:3000/login)  
 
 **Code Snippet:**
 ```tsx
@@ -124,24 +126,10 @@ export default function LoginPage() {
 
 ---
 
-### Person 6 – Testing & Review
-
-**Overview:**
-(Summarize your role testing the implementations features, what you verified, what worked, and any issues found.)
-
-**Testing Notes:**
-| Feature | Tested By | Result | Comments |
-|-----------|-------------|---------|-----------|
-| SEC-1 | Person 6 | Pass or Fail or Pending |  |
-| UI-1 | Person 6 | Pass or Fail or Pending |  |
-| UI-2 | Person 6 | Pass or Fail or Pending |  |
-
----
-
 ## **4. OVERALL Testing & Review**
 | Story ID | Test Description | Method | Result | Verified By |
 |-----------|------------------|---------|---------|--------------|
-| SEC-1 | Login accepts valid credentials | Manual UI test | Pending | TBD |
+| SEC-1 | Login accepts valid credentials | Manual UI test | Complete | Arjun Singh |
 | UI-1 | Search returns cars by filter | Manual UI test | Pending | TBD |
 | UI-2 | Reservation stores temporary booking | Manual UI test | Pending | TBD |
 
@@ -149,12 +137,12 @@ export default function LoginPage() {
 
 ## **5. Sprint Review & Reflection**
 **Completed:**  
-- /
+- SEC-1 (Secure Login) implemented and tested successfully. Page renders correctly on localhost and validates user input.
 - /
 - /
 
 **Next Sprint:**  
-- Add real database connections
+- Add backend authentication and user sessions. Connect login to profile and reservation pages
 - Finalize search and reservation UIs
 - Implement registration and manager roles
 
