@@ -118,6 +118,39 @@ app/data/mockCars.ts
 ### Connor Davison - UI-1 (Search Cars/Reserve add ons)
 - Attached a button link to "Reserve" on the search page; Redirects user to reserve page with details of the car that is selected.
 - Attached Images to Cars
+
+***Code Snippet:***
+```tsx
+<main className="flex flex-col items-center p-8 min-h-screen bg-gray-950 text-white">
+            <h1 className="text-4xl font-bold mb-6">Reserve a Car</h1>
+
+            {/* Selected Car Preview */}
+            {formData.carId && (() => {
+                const selectedCar = mockCars.find(car => car.id.toString() === formData.carId);
+                return selectedCar ? (
+                    <div className="bg-gray-800 p-4 rounded-xl mb-6 max-w-md w-full">
+                        <h2 className="text-lg font-semibold mb-2 text-blue-400">Selected Car:</h2>
+                        <div className="flex items-center space-x-4">
+                            {/* Have the car's actual image show */}
+                            <div className="w-24 h-16 rounded-lg overflow-hidden">
+                                <Image
+                                    src={selectedCar.image}
+                                    alt={`${selectedCar.make} ${selectedCar.model}`}
+                                    width={128}
+                                    height={128}
+                                    className="object-cover w-full h-full"
+                                />
+                            </div>
+                            <div>
+                                <h3 className="font-semibold">{selectedCar.year} {selectedCar.make} {selectedCar.model}</h3>
+                                <p className="text-green-400 font-bold">${selectedCar.pricePerDay}/day</p>
+                                <p className="text-sm text-gray-400">{selectedCar.location}</p>
+                            </div>
+                        </div>
+                    </div>
+                ) : null;
+            })()}
+```
 ---
 
 ### Sam Oreskovic – UI-2 (Reserve Car)
