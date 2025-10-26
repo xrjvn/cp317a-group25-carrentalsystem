@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { mockCars, carTypes, locations, fuelTypes, transmissions, Car } from '../data/mockCars';
 
 export default function SearchPage() {
@@ -281,9 +282,12 @@ export default function SearchPage() {
                           </span>
                           <span className="text-gray-600">/day</span>
                         </div>
-                        <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <Link 
+                          href={`/reserve?carId=${car.id}`}
+                          className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+                        >
                           Reserve
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </div>

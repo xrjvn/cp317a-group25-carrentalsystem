@@ -1,19 +1,30 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { mockCars } from "@/app/data/mockCars";
 import Image from "next/image";
 
 
 export default function ReservePage() {
+    const searchParams = useSearchParams();
+    const preSelectedCarId = searchParams.get('carId');
+    
     const [formData, setFormData] = useState({
         name: "",
         email: "",
-        carId: "",
+        carId: preSelectedCarId || "",
         pickupDate: "",
         returnDate: "",
     });
 
     const [reservations, setReservations] = useState<any[]>([]);
+
+    // Update carId when URL parameter changes
+    useEffect(() => {
+        if (preSelectedCarId) {
+            setFormData(prev => ({ ...prev, carId: preSelectedCarId }));
+        }
+    }, [preSelectedCarId]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -41,6 +52,26 @@ export default function ReservePage() {
     return (
         <main className="flex flex-col items-center p-8 min-h-screen bg-gray-950 text-white">
             <h1 className="text-4xl font-bold mb-6">Reserve a Car</h1>
+
+            {/* Selected Car Preview */}
+            {formData.carId && (() => {
+                const selectedCar = mockCars.find(car => car.id.toString() === formData.carId);
+                return selectedCar ? (
+                    <div className="bg-gray-800 p-4 rounded-xl mb-6 max-w-md w-full">
+                        <h2 className="text-lg font-semibold mb-2 text-blue-400">Selected Car:</h2>
+                        <div className="flex items-center space-x-4">
+                            <div className="w-16 h-16 bg-gray-600 rounded-lg flex items-center justify-center">
+                                <span className="text-xs text-gray-400">🚗</span>
+                            </div>
+                            <div>
+                                <h3 className="font-semibold">{selectedCar.year} {selectedCar.make} {selectedCar.model}</h3>
+                                <p className="text-green-400 font-bold">${selectedCar.pricePerDay}/day</p>
+                                <p className="text-sm text-gray-400">{selectedCar.location}</p>
+                            </div>
+                        </div>
+                    </div>
+                ) : null;
+            })()}
 
             {/* Form */}
             <form
