@@ -52,7 +52,7 @@ No backend yet; future sprints will take that on.
 - `/app/login/page.tsx` – Login component
 
 **Code Snippet:**
-\```tsx
+```tsx
 "use client";
 import { useState } from "react";
 
@@ -96,7 +96,7 @@ export default function LoginPage() {
     </main>
   );
 }
-\```
+```
 
 ---
 
