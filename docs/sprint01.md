@@ -114,6 +114,10 @@ app/data/mockCars.ts
 **Code Snippet:**
 (/CODE GOES HERE/)
 
+
+### Connor Davison - UI-1 (Search Cars/Reserve add ons)
+- Attached a button link to "Reserve" on the search page; Redirects user to reserve page with details of the car that is selected.
+- Attached Images to Cars
 ---
 
 ### Sam Oreskovic – UI-2 (Reserve Car)
