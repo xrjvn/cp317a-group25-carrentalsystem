@@ -111,6 +111,10 @@ export default function LoginPage() {
 - Car display cards made with optimized Next.js Image component
 - Styling used Tailwind CSS 
 
+### Connor Davison - UI-1 (Search Cars/Reserve add ons)
+- Attached a button link to "Reserve" on the search page; Redirects user to reserve page with details of the car that is selected.
+- Attached Images to Cars
+
 **Files Modified:**
 - /app/search/page.tsx
 - app/data/mockCars.ts
@@ -428,10 +432,6 @@ export default function SearchPage() {
 }
 ```
 
-
-### Connor Davison - UI-1 (Search Cars/Reserve add ons)
-- Attached a button link to "Reserve" on the search page; Redirects user to reserve page with details of the car that is selected.
-- Attached Images to Cars
 ---
 
 ### Sam Oreskovic – UI-2 (Reserve Car)
