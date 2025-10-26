@@ -282,7 +282,7 @@ export default function ReservePage() {
 | Story ID | Test Description | Method | Result | Verified By |
 |-----------|------------------|---------|---------|--------------|
 | SEC-1 | Login accepts valid credentials | Manual UI test | Complete | Arjun Singh |
-| UI-1 | Search returns cars by filter | Manual UI test | Pending | TBD |
+| UI-1 | Search returns cars by filter | Manual UI test | Complete | Connor Davison |
 | UI-2 | Reservation stores temporary booking | Manual UI test | Complete | Sam Oreskovic |
 
 ---
