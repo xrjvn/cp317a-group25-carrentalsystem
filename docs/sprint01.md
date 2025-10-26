@@ -114,8 +114,8 @@ export default function LoginPage() {
 ### Connor Davison - UI-1 (Search Cars/Reserve add ons)
 
 - Attached a button link to "Reserve" on the search page; Redirects user to reserve page with details of the car that is selected.
-- Attached Images to Cars
-- 
+- Reserve Side: Display the car currently selected
+- Attached Images to Cars  
 **Code Snippet:**
 ```tsx
 <main className="flex flex-col items-center p-8 min-h-screen bg-gray-950 text-white">
