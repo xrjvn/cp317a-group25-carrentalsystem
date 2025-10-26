@@ -9,6 +9,7 @@ export default function Navigation() {
   const navItems = [
     { href: '/', label: 'Home' },
     { href: '/search', label: 'Search Cars' },
+    { href: '/reserve', label: 'Reserve Car' },
     { href: '/login', label: 'Login' },
   ];
 
