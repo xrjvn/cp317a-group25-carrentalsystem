@@ -102,13 +102,15 @@ export default function LoginPage() {
 
 ---
 
-### Person 2 & Person 3 – UI-1 (Search Cars)
+### Khush Patel & Hayden Gdanski – UI-1 (Search Cars)
 **Overview:**
 (Write a few sentences about progress here, like how you built or mocked the car search feature using static JSON data or sample car listings.)
-
+- developed a sample dataset containing a list of 8 different cars that include details like make,model,year, price, features etc.
+- Additi
 **Files Modified:**
 (List the main file paths, e.g. /app/search/page.tsx.)
-
+app/src/app/search/page.tsx
+app/data/mockCars.ts
 **Code Snippet:**
 (/CODE GOES HERE/)
 
