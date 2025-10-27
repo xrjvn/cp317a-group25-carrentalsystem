@@ -35,8 +35,8 @@ They form the foundation of the system — every feature onward (modifications, 
 | Story ID | Story Title | Points | Priority | Assigned To | Tasks | Status |
 |-----------|-------------|---------|-----------|--------------|--------|---------|
 | SEC-1 | Secure Login | 8 | High | Arjun Singh | Implement login page with mock auth and validation | Completed |
-| UI-1 | Search Cars | 5 | High | Person 2 & Person 3 | Create search form + results page with mock data | In Progress |
-| UI-2 | Reserve Car | 8 | High | Person 4 & Person 5 | Build booking form and temporary storage logic | In Progress |
+| UI-1 | Search Cars | 5 | High | Person 2 & Person 3 | Create search form + results page with mock data | Completed |
+| UI-2 | Reserve Car | 8 | High | Person 4 & Person 5 | Build booking form and temporary storage logic | Completed |
 
 ---
 
