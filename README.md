@@ -12,6 +12,7 @@ The system will be developed following the **Scrum methodology** with tracked co
 - Hayden Gdanski
 - Khush Patel
 - Sam Oreskovic
+- Andrew Opris
 
 ## Objectives
 1. Allow customers to search for available cars by type/date.
