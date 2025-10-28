@@ -660,7 +660,7 @@ export default function ReservePage() {
 
 ## **6. Team Blog (Update)**
 Team continues to use **Group25-Blog.xlsx** to log sprint work.
-Each member should record tasks, meeting notes, and estimated hours.
+Each member will record tasks, meeting notes, and estimated hours.
 
 ---
 
