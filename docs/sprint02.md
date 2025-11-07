@@ -27,7 +27,7 @@ Deliver working user account + rental management features.
 - Account / Profile (UI-6) to store in mock DB (memory file store)
 
 **Why these stories:**  
-These features complete the basic customer lifecycle for booking usage — users can now manage, see, modify, and cancel their own past bookings.
+These features complete the basic customer lifecycle for booking usage. Users can now manage, see, modify, and cancel their own past bookings.
 
 ---
 
