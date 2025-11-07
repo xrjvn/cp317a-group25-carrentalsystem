@@ -11,6 +11,7 @@ export default function Navigation() {
     { href: '/search', label: 'Search Cars' },
     { href: '/reserve', label: 'Reserve Car' },
     { href: '/login', label: 'Login' },
+    { href: '/reservations', label: 'My Reservations' },
   ];
 
   return (
