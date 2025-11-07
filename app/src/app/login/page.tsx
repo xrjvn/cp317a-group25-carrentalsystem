@@ -6,7 +6,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (username === "testuser" && password === "test123") {
       setMessage("✅ Login Successful – Redirecting to Dashboard...");
