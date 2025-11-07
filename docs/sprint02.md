@@ -1,5 +1,19 @@
-# CP317A – Sprint 02  
+# CP317A – Sprint 02
 **Group 25 – Car Rental System**
+
+---
+
+## Cover Page
+- **Course Code:** CP317A – Software Engineering
+- **Project Title:** Car Rental System
+- **Group ID:** Group 25
+- **Team Members:**
+  - Arjun Singh
+  - Connor Davison
+  - Hayden Gdanski
+  - Khush Patel
+  - Sam Oreskovic
+  - Andrew Opris
 
 ---
 
@@ -21,9 +35,9 @@ These features complete the basic customer lifecycle for booking usage — users
 
 | Story ID | Story Title | Points | Priority | Assigned To | Tasks | Status |
 |----------|-------------|--------|----------|-------------|-------|--------|
-| UI-3 | Cancel Reservation | 3 | Medium | <TEAM MEMBER NAME> | Implement remove reservation from mock DB | In Progress |
-| UI-4 | View Rental History | 2 | Low | <TEAM MEMBER NAME> | Show past rentals from mock DB | In Progress |
-| UI-5 | Modify Reservation | 5 | Medium | <TEAM MEMBER NAME> | Update reservation record in mock DB | In Progress |
+| UI-3 | Cancel Reservation | 3 | Medium | <NAME> | Implement remove reservation from mock DB | In Progress |
+| UI-4 | View Rental History | 2 | Low | <NAME> | Show past rentals from mock DB | In Progress |
+| UI-5 | Modify Reservation | 5 | Medium | <NAME> | Update reservation record in mock DB | In Progress |
 | UI-6 | Account / Profile | 5 | Medium | Arjun Singh | Profile page + mock store setup completed | Completed |
 
 ---
@@ -34,7 +48,7 @@ These features complete the basic customer lifecycle for booking usage — users
 **Overview:**  
 Profile page implemented under `/src/app/profile/page.tsx`. User data loads from mock store and updates mock store on Save.
 
-**Files Modified:**  
+**Files Modified:**
 - `/src/app/profile/page.tsx`  
 - `/src/lib/mockData.ts` (created)
 
