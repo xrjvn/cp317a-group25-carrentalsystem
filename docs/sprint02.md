@@ -136,5 +136,41 @@ export default function ProfilePage() {
 
 ---
 
+## **4. Testing Summary**
+| Story ID | Test Description | Method | Result | Verified By |
+|-----------|------------------|---------|---------|--------------|
+| UI-6 | Profile update stores edited data | Manual UI test | Complete | Arjun Singh |
+| UI-3 | Cancel reservation removes entry | Manual UI test | Pending | Person |
+| UI-4 | Rental history loads & shows correctly | Manual UI test | Pending | Person |
+| UI-5 | Modify reservation updates stored data | Manual UI test | Pending | Person |
+---
+
+## **5. Sprint Review & Reflection**
+**Completed:**  
+- UI-6 (Account/Profile) implemented and tested successfully. Profile feature working with mock in-memory storage.
+- UI-3 ()
+- UI-4 ()
+- UI-5 ()
+
+**Next Sprint:**  
+- Move persistence into real DB file
+- 
+- 
+
+---
+
+## **6. Team Blog (Update)**
+Team continues to use **Group25-Blog.xlsx** to log sprint work.
+Each member will record tasks, meeting notes, and estimated hours.
+
+---
+
+## **7. Submission Checklist**
+- `Group25-Sprint02.pdf` (this document)
+- `Group25-ProductBacklog.xlsx` (updated backlog)
+- `Group25-Blog.xlsx` (updated log)
+- Short demo video (1-3 mins) showing feature usage
+
+**Deadline:** Sunday, November 9th, 2025 @ 11:59 PM
 
 
