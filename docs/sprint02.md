@@ -96,7 +96,7 @@ export default function ProfilePage() {
 
 ### Connor Davison – UI-3 (Cancel Reservation)
 **Overview:**  
-(write notes here)
+Reservation page implemented under `/src/app/reservations/page.tsx`. Mock data works show shows under users reservations tab
 
 **Files Modified:**
 - `/src/app/reservations/page.tsx`  (created)
@@ -211,7 +211,7 @@ export default function ProfilePage() {
 |-----------|------------------|---------|---------|--------------|
 | UI-6 | Profile update stores edited data | Manual UI test | Complete | Arjun Singh |
 | UI-3 | Cancel reservation removes entry | Manual UI test | Pending | Person |
-| UI-4 | Rental history loads & shows correctly | Manual UI test | Pending | Person |
+| UI-4 | Rental history loads & shows correctly | Manual UI test | Complete | Connor Davison |
 | UI-5 | Modify reservation updates stored data | Manual UI test | Pending | Person |
 ---
 
@@ -219,7 +219,7 @@ export default function ProfilePage() {
 **Completed:**  
 - UI-6 (Account/Profile) implemented and tested successfully. Profile feature working with mock in-memory storage.
 - UI-3 ()
-- UI-4 ()
+- UI-4 (Reservation History) implemented and testeed successfully. Shows users reservation history and active reservations (mock data)
 - UI-5 ()
 
 **Next Sprint:**  
