@@ -109,7 +109,7 @@ export default function ProfilePage() {
 **Overview:**  
 - Modified `reserve/page.tsx` to include a cancel button inside the temporary reservation list. Connected to `removeReservation()` for easy deletion
 - Added working Cancel buttons beside each active booking in `reservations/page.tsx`. Added web confirmation prompts to confirm each cancellation on this page.
-- Ensured car images are shown on each reservation, regardless of their page.
+- Altered the image paths in `data/mockCars.ts`, ensuring car images are shown on each reservation, regardless of their page.
 - Verified that deleting a reservation on `/reservations` reflects on `/reserve`, and vice-versa, using context in `context/ReservationContext.tsx`
   
 
@@ -117,15 +117,6 @@ export default function ProfilePage() {
 - `/src/app/reserve/page.tsx`  (modified)
 - `/src/app/reservations/page.tsx` (modified)
 - `/src/app/data/mockCars` (modified)
-
-**Testing/Verification:**
-- Reserved multiple cars via `/reserve` ("Reserve" tab).
-- Viewed all active bookings on `/reservations` ("My Reservations" tab).
-- Clicking cancel instantly removes the selected booking from both pages.
-- Confirmed image is showing on both pages correctly.
-
-**Outcome:**
-The Cancel Reservation feature is now fully implemented, functional, and is globally syncronized between pages, without the need to reload.
 
 **Code Snippet:**  
 ```tsx
@@ -221,6 +212,21 @@ useEffect(() => {
   </div>
 )}
 ```
+  
+  **Test Cases:**
+| Case | Input | Expected Result | Actual Result | Result |
+|------|--------|-----------------|----------------|--------|
+| Images from `public/cars/` should be present in the `Reserve` page | Add reservation | Image of selected car should be shown | Correct image is shown | PASS |
+| Reservations appearing on both pages | Added reservation, switched pages | Second page should show reservation from first page | Shows reservation on both pages | PASS |
+| Canceling Reservation on `/reserve` | Added reservation, pressed cancel after making it | Reservation should be removed from both pages | Reservations were removed | PASS |
+| Canceling Reservation on `/reservations` | Added reservation, pressed cancel on the other page after making it | Reservation should be removed from both pages | Reservations were removed | PASS |
+
+
+**Verification:** Sam
+
+
+**Outcome:**
+The Cancel Reservation feature is now fully implemented, functional, and is globally syncronized between pages, without the need to reload.
 
 ---
 
