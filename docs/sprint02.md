@@ -113,7 +113,7 @@ export default function ProfilePage() {
 - Clicking cancel instantly removes the selected booking from both pages.
 - Confirmed image is showing on both pages correctly.
 
-**Outcome**
+**Outcome:**
 The Cancel Reservation feature is now fully implemented, functional, and is globally syncronized between pages, without the need to reload.
 
 **Code Snippet:**  
