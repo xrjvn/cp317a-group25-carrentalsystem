@@ -319,7 +319,82 @@ Reservation page implemented under `/src/app/reservations/page.tsx`. Mock data w
 | 1+ and Cancelled Reservations | Reserving a few cars and cancelling one | Cars under active booking and cancelled reservations | Cars were under active booking and cancelled reservations | PASS |
 
 ---
+### Hayden Global reservation state
+I noticed that we currently had no global context database that would save and send information over across different pages. Where  if you selected to reserve a certain car it would not carry over and be shown in 'my reservations'.  So I went with  a global state approach to manange all the reservations in one place rather than have it done locally so that any page can read or write to reservations. I started with importing the context state from react using client
+```
+'use client';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { Reservation } from '../data/mockReservations';
+```
+I then created some type definitions so that we can update the list/mock data at a later date or remove them with
+```
+interface ReservationContextType {
+  reservations: Reservation[];
+  addReservation: (reservation: Omit<Reservation, 'id' | 'status' | 'bookingDate'>) => void;
+  updateReservationStatus: (id: string, status: 'active' | 'completed' | 'cancelled') => void;
+  removeReservation: (id: string) => void;
+}
+```
+This piece works by taking the array of all reservations and adding a new reservation (id, status and booking date)
+I then created a const object for reservaton so that when you update it  react will re-render the component.From const ReservationContext = createContext<ReservationContextType | undefined>(undefined); and [reservations, setReservations] = useState<Reservation[]>([]); Additonally making a child component so that we can call useReservations anywhere in the app with const { reservations, addReservation } = useReservations();
 
+Next I added the addReservation, updateReservationStatus and removeReservation functions: Which are to be used in cancel reservations and view reservations
+```
+const addReservation = (reservationData: Omit<Reservation, 'id' | 'status' | 'bookingDate'>) => {
+  const newReservation: Reservation = {
+    ...reservationData,
+    id: `RES${Date.now()}`, // Generate unique ID based on timestamp
+    status: 'active',
+    bookingDate: new Date().toISOString().split('T')[0], // Current date in YYYY-MM-DD format
+  };
+  setReservations((prev) => [...prev, newReservation]);
+};
+```
+The addReservation function takes partial data and generates a new id and adds the new reservation to the array. The UpdateReservaton then takes that created id and updates the status
+```
+const updateReservationStatus = (id: string, status: 'active' | 'completed' | 'cancelled') => {
+  setReservations((prev) =>
+    prev.map((reservation) =>
+      reservation.id === id ? { ...reservation, status } : reservation
+    )
+  );
+};
+const removeReservation = (id: string) => {
+  setReservations((prev) => prev.filter((reservation) => reservation.id !== id));
+};
+```
+
+The next part I made was a wrapper to be used in the layout.tsx to wrap the entire app so that it can used  anywhere and a custom hook as useReservations as stated earlier.
+```
+return (
+  <ReservationContext.Provider
+    value={{
+      reservations,
+      addReservation,
+      updateReservationStatus,
+      removeReservation,
+    }}
+  >
+    {children}
+  </ReservationContext.Provider>
+);
+export function useReservations() {
+  const context = useContext(ReservationContext);
+  if (context === undefined) {
+    throw new Error('useReservations must be used within a ReservationProvider');
+  }
+  return context;
+}
+```
+
+
+
+
+**Files Modified:**
+- context/ReservationContext.tsx
+- reserve/page.tsx
+- reservation/page.tsx
+---
 ### Person X – UI-5 (Modify Reservation)
 **Overview:**  
 (write notes here)
