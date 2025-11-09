@@ -343,9 +343,9 @@ Next I added the addReservation, updateReservationStatus and removeReservation f
 const addReservation = (reservationData: Omit<Reservation, 'id' | 'status' | 'bookingDate'>) => {
   const newReservation: Reservation = {
     ...reservationData,
-    id: `RES${Date.now()}`, // Generate unique ID based on timestamp
+    id: `RES${Date.now()}`, // unique id
     status: 'active',
-    bookingDate: new Date().toISOString().split('T')[0], // Current date in YYYY-MM-DD format
+    bookingDate: new Date().toISOString().split('T')[0], // todays date
   };
   setReservations((prev) => [...prev, newReservation]);
 };
