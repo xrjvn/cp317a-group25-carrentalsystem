@@ -349,7 +349,7 @@ export default function ReservePage() {
 
 ---
 
-Connor Davidson – UI-4 (View Rental History)
+### Connor Davidson – UI-4 (View Rental History)
 **Overview:**  
 Reservation page implemented under `/src/app/reservations/page.tsx`. Mock data works show shows under users reservations tab
 
