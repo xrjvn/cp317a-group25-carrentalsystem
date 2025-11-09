@@ -349,7 +349,7 @@ export default function ReservePage() {
 
 ---
 
-### Connor Davidson – UI-4 (View Rental History)
+### Connor Davison – UI-4 (View Rental History)
 **Overview:**  
 Reservation page implemented under `/src/app/reservations/page.tsx`. Mock data works show shows under users reservations tab
 
@@ -430,6 +430,12 @@ Reservation page implemented under `/src/app/reservations/page.tsx`. Mock data w
       )}
     </div>
 ```
+**Test Cases:**
+| Case | Input | Expected Result | Actual Result | Result |
+|------|--------|-----------------|----------------|--------|
+| No Reservations | Nothing | Showing the option to search/reserve a car | Showing both otions | PASS |
+| 1+ Reservations | Reserved a car | Showing reserved cars under active bookings | A reserved car | PASS |
+| 1+ and Cancelled Reservations | Reserving a few cars and cancelling one | Cars under active booking and cancelled reservations | Cars were under active booking and cancelled reservations | PASS |
 
 ---
 
