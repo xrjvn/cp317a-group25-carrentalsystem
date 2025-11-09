@@ -26,6 +26,9 @@ export default function ReservePage() {
         }
     }, [preSelectedCarId]);
 
+
+
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
@@ -48,6 +51,11 @@ export default function ReservePage() {
         alert(`Reservation confirmed for ${selectedCar.make} ${selectedCar.model}!`);
         setFormData({ name: "", email: "", carId: "", pickupDate: "", returnDate: "" });
     };
+
+    const handleCancel = (index: number) => {
+        setReservations((prev) => prev.filter((_, i) => i !== index));
+    };
+
 
     return (
         <main className="flex flex-col items-center p-8 min-h-screen bg-gray-950 text-white">
@@ -158,22 +166,37 @@ export default function ReservePage() {
                 <div className="mt-8 bg-gray-900 p-4 rounded-xl max-w-md w-full">
                     <h2 className="text-2xl mb-2">Current Reservations</h2>
                     {reservations.map((r, i) => (
-                    <div key={i} className="border-t border-gray-700 py-2 text-sm flex items-center gap-3">
-                        
-                        {/* CURRENTLY A STATIC IMAGE, CHANGE TO DYNAMIC, PER-CAR IMAGE IN LATER ITERATIONS */}
-                        <Image
-                        src={r.car.image && r.car.image.trim() !== "" ? r.car.image : "/DefaultCarImage.png"}
-                        alt={`${r.car.brand ?? "Car"} ${r.car.model ?? ""}`}
-                        width={100}
-                        height={60}
-                        className="rounded object-cover"
-                        unoptimized
-                        />
-                        <div>
-                        <strong>{r.name}</strong> reserved
-                        <b> {r.car.brand} {r.car.model}</b> ({r.car.year})<br />
-                        from {r.pickupDate} &rarr; {r.returnDate} (${r.car.pricePerDay}/day)
+                    <div 
+                        key={i}
+                        className="border-t border-gray-700 py-3 text-sm flex items-center justify-between gap-3"
+                    >
+                        {/* Left: car image + details */}
+                        <div className="flex items-center gap-3">
+                            <img
+                                src={r.car.image && r.car.image.trim() !== "" ? r.car.image : "/DefaultCarImage.png"}
+                                alt={`${r.car.brand ?? "Car"} ${r.car.model ?? ""}`}
+                                width={100}
+                                height={60}
+                                style={{ borderRadius: "6px", objectFit: "cover" }}
+                            />
+                            <div>
+                                <strong>{r.name}</strong> reserved{" "}
+                                <b>
+                                    {r.car.brand} {r.car.model}
+                                </b>{" "}
+                                ({r.car.year})
+                                <br />
+                                from {r.pickupDate} &rarr; {r.returnDate} (${r.car.pricePerDay}/day)
+                            </div>
                         </div>
+
+                        {/* Right: Cancel button */}
+                        <button
+                            onClick={() => handleCancel(i)}
+                            className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm font-medium"
+                        >
+                            Cancel
+                        </button>
                     </div>
                     ))}
                 </div>
