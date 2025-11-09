@@ -1,13 +1,16 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { mockCars } from "@/app/data/mockCars";
 import Image from "next/image";
+import { useReservations } from "../context/ReservationContext";
 
 
 export default function ReservePage() {
     const searchParams = useSearchParams();
+    const router = useRouter();
     const preSelectedCarId = searchParams.get('carId');
+    const { addReservation } = useReservations();
     
     const [formData, setFormData] = useState({
         name: "",
@@ -16,8 +19,6 @@ export default function ReservePage() {
         pickupDate: "",
         returnDate: "",
     });
-
-    const [reservations, setReservations] = useState<any[]>([]);
 
     // Update carId when URL parameter changes
     useEffect(() => {
@@ -42,16 +43,27 @@ export default function ReservePage() {
         const selectedCar = mockCars.find((c) => c.id.toString() === formData.carId);
         if (!selectedCar) return alert("Please select a valid car option.");
 
-        const newReservation = { ...formData, car: selectedCar };
-        setReservations([...reservations, newReservation]);
+        // Add reservation to global state
+        addReservation({
+            name: formData.name,
+            email: formData.email,
+            carId: formData.carId,
+            pickupDate: formData.pickupDate,
+            returnDate: formData.returnDate,
+        });
 
         alert(`Reservation confirmed for ${selectedCar.make} ${selectedCar.model}!`);
+        
+        // Reset form
         setFormData({ name: "", email: "", carId: "", pickupDate: "", returnDate: "" });
+        
+        // Redirect to reservations page to see the booking
+        router.push('/reservations');
     };
 
     return (
-        <main className="flex flex-col items-center p-8 min-h-screen bg-gray-950 text-white">
-            <h1 className="text-4xl font-bold mb-6">Reserve a Car</h1>
+        <main className="flex flex-col items-center p-8 min-h-screen bg-grey-500 text-white">
+            <h1 className="text-4xl font-bold mb-6 text-black">Reserve a Car</h1>
 
             {/* Selected Car Preview */}
             {formData.carId && (() => {
@@ -151,33 +163,6 @@ export default function ReservePage() {
                     Confirm Reservation
                 </button>
             </form>
-
-
-            {/* Temporary reservation list */}
-            {reservations.length > 0 && (
-                <div className="mt-8 bg-gray-900 p-4 rounded-xl max-w-md w-full">
-                    <h2 className="text-2xl mb-2">Current Reservations</h2>
-                    {reservations.map((r, i) => (
-                    <div key={i} className="border-t border-gray-700 py-2 text-sm flex items-center gap-3">
-                        
-                        {/* CURRENTLY A STATIC IMAGE, CHANGE TO DYNAMIC, PER-CAR IMAGE IN LATER ITERATIONS */}
-                        <Image
-                        src={r.car.image && r.car.image.trim() !== "" ? r.car.image : "/DefaultCarImage.png"}
-                        alt={`${r.car.brand ?? "Car"} ${r.car.model ?? ""}`}
-                        width={100}
-                        height={60}
-                        className="rounded object-cover"
-                        unoptimized
-                        />
-                        <div>
-                        <strong>{r.name}</strong> reserved
-                        <b> {r.car.brand} {r.car.model}</b> ({r.car.year})<br />
-                        from {r.pickupDate} &rarr; {r.returnDate} (${r.car.pricePerDay}/day)
-                        </div>
-                    </div>
-                    ))}
-                </div>
-            )}
         </main>
     );
 }

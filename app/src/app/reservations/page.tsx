@@ -1,14 +1,12 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { mockReservations, Reservation } from '../data/mockReservations';
+import { useReservations } from '../context/ReservationContext';
 import { mockCars } from '../data/mockCars';
 
 export default function ReservationsPage() {
-  // const [reservations] = useState(mockReservations);
-  const [reservations] = useState<Reservation[]>([]);
+  const { reservations  } = useReservations();
 
   // Filter active bookings
   const activeBookings = reservations.filter(r => r.status === 'active');
@@ -16,7 +14,7 @@ export default function ReservationsPage() {
   const cancelledBookings = reservations.filter(r => r.status === 'cancelled');
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white p-8">
+    <div className="min-h-screen bg-grey-450 text-white p-8">
       <h1 className="text-3xl font-bold text-left mb-6">My Reservations</h1>
       
       {/* Active Bookings Section */}
