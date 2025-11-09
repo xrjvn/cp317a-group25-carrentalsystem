@@ -36,7 +36,7 @@ These features complete the basic customer lifecycle for booking usage. Users ca
 | Story ID | Story Title | Points | Priority | Assigned To | Tasks | Status |
 |----------|-------------|--------|----------|-------------|-------|--------|
 | UI-3 | Cancel Reservation | 3 | Medium | <NAME> | Implement remove reservation from mock DB | In Progress |
-| UI-4 | View Rental History | 2 | Low | <NAME> | Show past rentals from mock DB | In Progress |
+| UI-4 | View Rental History | 2 | Low | <NAME> | Show past rentals from mock DB | Completed |
 | UI-5 | Modify Reservation | 5 | Medium | <NAME> | Update reservation record in mock DB | In Progress |
 | UI-6 | Account / Profile | 5 | Medium | Arjun Singh | Profile page + mock store setup completed | Completed |
 
@@ -94,16 +94,86 @@ export default function ProfilePage() {
 
 ---
 
-### Person X – UI-3 (Cancel Reservation)
+### Connor Davison – UI-3 (Cancel Reservation)
 **Overview:**  
-(write notes here)
+Reservation page implemented under `/src/app/reservations/page.tsx`. Mock data works show shows under users reservations tab
 
 **Files Modified:**
-- 
+- `/src/app/reservations/page.tsx`  (created)
+- `/src/data/mockReservations.ts` (created)
+
 
 **Code Snippet:**  
 ```tsx
-// fill code here
+<div className="min-h-screen bg-gray-950 text-white p-8">
+      <h1 className="text-3xl font-bold text-left mb-6">My Reservations</h1>
+      
+      {/* Active Bookings Section */}
+      <section className="mb-8">
+        <h2 className="text-sm text-green-400 font-semibold text-left mb-4">Active Bookings</h2>
+        
+
+
+        {/* Show message if no active bookings */}
+        {activeBookings.length === 0 ? (
+          <div className="bg-gray-800 rounded-lg p-8 text-center">
+            <p className="text-gray-400 mb-6 text-lg">No active bookings</p>
+            <div className="flex gap-4 justify-center">
+              <Link href="/search" className="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors">
+                Search Cars
+              </Link>
+              <Link href="/reserve" className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors">
+                Reserve Car
+              </Link>
+            </div>
+          </div>
+        ) : (
+
+          // Show bookings list
+          <div className="space-y-4">
+            {activeBookings.map((reservation) => {
+              const car = mockCars.find(c => c.id.toString() === reservation.carId);
+              if (!car) return null;
+              
+              return (
+                <div key={reservation.id} className="bg-gray-800 rounded-lg p-4 flex items-center gap-4">
+                  <Image src={car.image} alt={`${car.make} ${car.model}`} width={100} height={60} className="rounded object-cover" />
+                  <div className="flex-1">
+                    <strong>{reservation.name}</strong> reserved{' '}
+                    <b>{car.make} {car.model}</b> ({car.year})<br />
+                    from {reservation.pickupDate} → {reservation.returnDate} (${car.pricePerDay}/day)
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </section>
+
+      {/* Cancelled Bookings Section */}
+      {cancelledBookings.length > 0 && (
+        <section>
+          <h2 className="text-sm text-red-400 font-semibold text-left mb-4">Cancelled Bookings</h2>
+          <div className="space-y-4">
+            {cancelledBookings.map((reservation) => {
+              const car = mockCars.find(c => c.id.toString() === reservation.carId);
+              if (!car) return null;
+              
+              return (
+                <div key={reservation.id} className="bg-gray-800 rounded-lg p-4 flex items-center gap-4 opacity-50">
+                  <Image src={car.image} alt={`${car.make} ${car.model}`} width={100} height={60} className="rounded object-cover" />
+                  <div className="flex-1">
+                    <strong>{reservation.name}</strong> reserved{' '}
+                    <b>{car.make} {car.model}</b> ({car.year})<br />
+                    from {reservation.pickupDate} → {reservation.returnDate} (${car.pricePerDay}/day)
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+    </div>
 ```
 
 ---
@@ -141,7 +211,7 @@ export default function ProfilePage() {
 |-----------|------------------|---------|---------|--------------|
 | UI-6 | Profile update stores edited data | Manual UI test | Complete | Arjun Singh |
 | UI-3 | Cancel reservation removes entry | Manual UI test | Pending | Person |
-| UI-4 | Rental history loads & shows correctly | Manual UI test | Pending | Person |
+| UI-4 | Rental history loads & shows correctly | Manual UI test | Complete | Connor Davison |
 | UI-5 | Modify reservation updates stored data | Manual UI test | Pending | Person |
 ---
 
@@ -149,7 +219,7 @@ export default function ProfilePage() {
 **Completed:**  
 - UI-6 (Account/Profile) implemented and tested successfully. Profile feature working with mock in-memory storage.
 - UI-3 ()
-- UI-4 ()
+- UI-4 (Reservation History) implemented and testeed successfully. Shows users reservation history and active reservations (mock data)
 - UI-5 ()
 
 **Next Sprint:**  
