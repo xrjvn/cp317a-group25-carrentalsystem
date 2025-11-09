@@ -6,7 +6,7 @@ import { useReservations } from '../context/ReservationContext';
 import { mockCars } from '../data/mockCars';
 
 export default function ReservationsPage() {
-  const { reservations  } = useReservations();
+  const { reservations, removeReservation } = useReservations();
 
   // Filter active bookings
   const activeBookings = reservations.filter(r => r.status === 'active');
@@ -42,14 +42,37 @@ export default function ReservationsPage() {
               if (!car) return null;
               
               return (
-                <div key={reservation.id} className="bg-gray-800 rounded-lg p-4 flex items-center gap-4">
-                  <Image src={car.image} alt={`${car.make} ${car.model}`} width={100} height={60} className="rounded object-cover" />
-                  <div className="flex-1">
-                    <strong>{reservation.name}</strong> reserved{' '}
-                    <b>{car.make} {car.model}</b> ({car.year})<br />
-                    from {reservation.pickupDate} → {reservation.returnDate} (${car.pricePerDay}/day)
+                <div
+                  key={reservation.id}
+                  className="bg-gray-800 rounded-lg p-4 flex items-center justify-between gap-4"
+                >
+                  <div className="flex items-center gap-3">
+                    <Image
+                      src={car.image ? `/cars/${car.image}` : "/DefaultCarImage.png"}
+                      alt={`${car.make ?? "Car"} ${car.model ?? ""}`}
+                      width={100}
+                      height={60}
+                      className="rounded object-cover"
+                      onError={(e) => (e.currentTarget.src = "/DefaultCarImage.png")}
+                    />
+                    <div>
+                      <strong>{reservation.name}</strong> reserved{' '}
+                      <b>{car.make} {car.model}</b> ({car.year})<br />
+                      from {reservation.pickupDate} → {reservation.returnDate} (${car.pricePerDay}/day)
+                    </div>
                   </div>
+
+                  {/* Cancel Button */}
+                  <button
+                    onClick={() => {
+                      if (confirm("Cancel this reservation?")) removeReservation(reservation.id);
+                    }}
+                    className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm font-medium transition"
+                  >
+                    Cancel
+                  </button>
                 </div>
+
               );
             })}
           </div>
@@ -66,14 +89,39 @@ export default function ReservationsPage() {
               if (!car) return null;
               
               return (
-                <div key={reservation.id} className="bg-gray-800 rounded-lg p-4 flex items-center gap-4 opacity-50">
-                  <Image src={car.image} alt={`${car.make} ${car.model}`} width={100} height={60} className="rounded object-cover" />
-                  <div className="flex-1">
-                    <strong>{reservation.name}</strong> reserved{' '}
-                    <b>{car.make} {car.model}</b> ({car.year})<br />
-                    from {reservation.pickupDate} → {reservation.returnDate} (${car.pricePerDay}/day)
+                <div
+                  key={reservation.id}
+                  className="bg-gray-800 rounded-lg p-4 flex items-center justify-between gap-4"
+                >
+                  <div className="flex items-center gap-3">
+                    <Image
+                      src={car.image ? `/cars/${car.image}` : "/DefaultCarImage.png"}
+                      alt={`${car.make ?? "Car"} ${car.model ?? ""}`}
+                      width={100}
+                      height={60}
+                      className="rounded object-cover"
+                    />
+                    <div>
+                      <strong>{reservation.name}</strong> reserved{" "}
+                      <b>{car.make} {car.model}</b> ({car.year})
+                      <br />
+                      from {reservation.pickupDate} → {reservation.returnDate} (${car.pricePerDay}/day)
+                    </div>
                   </div>
+
+                  {/* Cancel Button */}
+                  <button
+                    onClick={() => {
+                      if (confirm("Are you sure you want to cancel this reservation?")) {
+                        removeReservation(reservation.id);
+                      }
+                    }}
+                    className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm font-medium transition"
+                  >
+                    Cancel
+                  </button>
                 </div>
+
               );
             })}
           </div>

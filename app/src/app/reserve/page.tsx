@@ -6,11 +6,12 @@ import Image from "next/image";
 import { useReservations } from "../context/ReservationContext";
 
 
+
+
 export default function ReservePage() {
     const searchParams = useSearchParams();
     const router = useRouter();
     const preSelectedCarId = searchParams.get('carId');
-    const { addReservation } = useReservations();
     
     const [formData, setFormData] = useState({
         name: "",
@@ -19,6 +20,8 @@ export default function ReservePage() {
         pickupDate: "",
         returnDate: "",
     });
+    const { reservations, addReservation, removeReservation } = useReservations();
+
 
     // Update carId when URL parameter changes
     useEffect(() => {
@@ -26,6 +29,9 @@ export default function ReservePage() {
             setFormData(prev => ({ ...prev, carId: preSelectedCarId }));
         }
     }, [preSelectedCarId]);
+
+
+
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -43,7 +49,6 @@ export default function ReservePage() {
         const selectedCar = mockCars.find((c) => c.id.toString() === formData.carId);
         if (!selectedCar) return alert("Please select a valid car option.");
 
-        // Add reservation to global state
         addReservation({
             name: formData.name,
             email: formData.email,
@@ -51,15 +56,17 @@ export default function ReservePage() {
             pickupDate: formData.pickupDate,
             returnDate: formData.returnDate,
         });
-
         alert(`Reservation confirmed for ${selectedCar.make} ${selectedCar.model}!`);
-        
+
         // Reset form
         setFormData({ name: "", email: "", carId: "", pickupDate: "", returnDate: "" });
-        
-        // Redirect to reservations page to see the booking
-        router.push('/reservations');
+
     };
+
+    const handleCancel = (index: number) => {
+        removeReservation(reservations[index].id);
+    };
+
 
     return (
         <main className="flex flex-col items-center p-8 min-h-screen bg-grey-500 text-white">
@@ -72,14 +79,15 @@ export default function ReservePage() {
                     <div className="bg-gray-800 p-4 rounded-xl mb-6 max-w-md w-full">
                         <h2 className="text-lg font-semibold mb-2 text-blue-400">Selected Car:</h2>
                         <div className="flex items-center space-x-4">
-                            {/* Have the car's actual image show instead of emoji */}
+                            {/* Insert Car Image*/}
                             <div className="w-24 h-16 rounded-lg overflow-hidden">
                                 <Image
-                                    src={selectedCar.image}
-                                    alt={`${selectedCar.make} ${selectedCar.model}`}
-                                    width={128}
-                                    height={128}
-                                    className="object-cover w-full h-full"
+                                src={`/cars/${selectedCar.image}`}
+                                alt={`${selectedCar.make} ${selectedCar.model}`}
+                                width={128}
+                                height={128}
+                                className="object-cover w-full h-full rounded-lg"
+                                onError={(e) => (e.currentTarget.src = "/DefaultCarImage.png")}
                                 />
                             </div>
                             <div>
@@ -163,6 +171,46 @@ export default function ReservePage() {
                     Confirm Reservation
                 </button>
             </form>
+
+            {/* Temporary reservation list */}
+            {reservations.map((r, i) => {
+            const car = mockCars.find(c => c.id.toString() === r.carId);
+            const imagePath = car?.image ? `/cars/${car.image}` : "/DefaultCarImage.png";
+
+            return (
+                <div 
+                key={i}
+                className="border-t border-gray-700 py-3 text-sm flex items-center justify-between gap-3"
+                >
+                <div className="flex items-center gap-3">
+                    <img
+                    src={imagePath}
+                    alt={`${car?.make ?? "Car"} ${car?.model ?? ""}`}
+                    width={100}
+                    height={60}
+                    style={{ borderRadius: "6px", objectFit: "cover" }}
+                    />
+                    <div>
+                    <strong>{r.name}</strong> reserved{" "}
+                    <b>
+                        {car?.make} {car?.model}
+                    </b>{" "}
+                    ({car?.year})
+                    <br />
+                    from {r.pickupDate} → {r.returnDate} (${car?.pricePerDay}/day)
+                    </div>
+                </div>
+
+                {/* Cancel button */}
+                <button
+                    onClick={() => handleCancel(i)}
+                    className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm font-medium"
+                >
+                    Cancel
+                </button>
+                </div>
+            );
+            })}
         </main>
     );
 }
