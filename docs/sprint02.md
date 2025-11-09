@@ -94,7 +94,251 @@ export default function ProfilePage() {
 
 ---
 
-### Connor Davison – UI-3 (Cancel Reservation)
+### Sam Oreskovic – UI-3 (Cancel Reservation)
+**Overview:**  
+- Modified `reserve/page.tsx` to include a cancel button inside the temporary reservation list. Connected to `removeReservation()` for easy deletion
+- Added working Cancel buttons beside each active booking in `reservations/page.tsx`. Added web confirmation prompts to confirm each cancellation on this page.
+- Ensured car images are shown on each reservation, regardless of their page.
+- Verified that deleting a reservation on `/reservations` reflects on `/reserve`, and vice-versa, using context in `context/ReservationContext.tsx`
+  
+
+**Files Modified:**
+- `/src/app/reserve/page.tsx`  (modified)
+- `/src/app/reservations/page.tsx` (modified)
+- `/src/app/data/mockCars` (modified)
+
+**Testing/Verification:**
+- Reserved multiple cars via `/reserve` ("Reserve" tab).
+- Viewed all active bookings on `/reservations` ("My Reservations" tab).
+- Clicking cancel instantly removes the selected booking from both pages.
+- Confirmed image is showing on both pages correctly.
+
+**Outcome**
+The Cancel Reservation feature is now fully implemented, functional, and is globally syncronized between pages, without the need to reload.
+
+**Code Snippet:**  
+```tsx
+"use client";
+import React, { useState, useEffect } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
+import { mockCars } from "@/app/data/mockCars";
+import Image from "next/image";
+import { useReservations } from "../context/ReservationContext";
+
+
+
+
+export default function ReservePage() {
+    const searchParams = useSearchParams();
+    const router = useRouter();
+    const preSelectedCarId = searchParams.get('carId');
+    
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        carId: preSelectedCarId || "",
+        pickupDate: "",
+        returnDate: "",
+    });
+    const { reservations, addReservation, removeReservation } = useReservations();
+
+
+    // Update carId when URL parameter changes
+    useEffect(() => {
+        if (preSelectedCarId) {
+            setFormData(prev => ({ ...prev, carId: preSelectedCarId }));
+        }
+    }, [preSelectedCarId]);
+
+
+
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (new Date(formData.returnDate) < new Date(formData.pickupDate)) {
+            alert("Return date cannot be earlier than pickup date.");
+            return;
+        }
+
+        const selectedCar = mockCars.find((c) => c.id.toString() === formData.carId);
+        if (!selectedCar) return alert("Please select a valid car option.");
+
+        addReservation({
+            name: formData.name,
+            email: formData.email,
+            carId: formData.carId,
+            pickupDate: formData.pickupDate,
+            returnDate: formData.returnDate,
+        });
+        alert(`Reservation confirmed for ${selectedCar.make} ${selectedCar.model}!`);
+
+        // Reset form
+        setFormData({ name: "", email: "", carId: "", pickupDate: "", returnDate: "" });
+
+    };
+
+    const handleCancel = (index: number) => {
+        removeReservation(reservations[index].id);
+    };
+
+
+    return (
+        <main className="flex flex-col items-center p-8 min-h-screen bg-grey-500 text-white">
+            <h1 className="text-4xl font-bold mb-6 text-black">Reserve a Car</h1>
+
+            {/* Selected Car Preview */}
+            {formData.carId && (() => {
+                const selectedCar = mockCars.find(car => car.id.toString() === formData.carId);
+                return selectedCar ? (
+                    <div className="bg-gray-800 p-4 rounded-xl mb-6 max-w-md w-full">
+                        <h2 className="text-lg font-semibold mb-2 text-blue-400">Selected Car:</h2>
+                        <div className="flex items-center space-x-4">
+                            {/* Insert Car Image*/}
+                            <div className="w-24 h-16 rounded-lg overflow-hidden">
+                                <Image
+                                src={`/cars/${selectedCar.image}`}
+                                alt={`${selectedCar.make} ${selectedCar.model}`}
+                                width={128}
+                                height={128}
+                                className="object-cover w-full h-full rounded-lg"
+                                onError={(e) => (e.currentTarget.src = "/DefaultCarImage.png")}
+                                />
+                            </div>
+                            <div>
+                                <h3 className="font-semibold">{selectedCar.year} {selectedCar.make} {selectedCar.model}</h3>
+                                <p className="text-green-400 font-bold">${selectedCar.pricePerDay}/day</p>
+                                <p className="text-sm text-gray-400">{selectedCar.location}</p>
+                            </div>
+                        </div>
+                    </div>
+                ) : null;
+            })()}
+
+            {/* Form */}
+            <form
+                onSubmit={handleSubmit}
+                className="bg-gray-900 p-6 rounded-2xl shadow-lg max-w-md w-full space-y-4"
+            >
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Full Name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full p-2 rounded bg-gray-800 border border-gray-700"
+                    required
+                />
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full p-2 rounded bg-gray-800 border border-gray-700"
+                    required
+                />
+                
+                {/* Dropdown populated from mockCars dataset */}
+                <select
+                name="carId"
+                value={formData.carId}
+                onChange={handleChange}
+                className="w-full p-2 rounded bg-gray-800 border border-gray-700"
+                required
+                >
+                <option value="">Select a Car</option>
+                {mockCars.map((car) => (
+                    <option key={car.id} value={car.id.toString()}>
+                    {car.make} {car.model} (${car.pricePerDay}/day)
+                    </option>
+                ))}
+                </select>
+
+                {/* Pickup date */}
+                <input
+                type="date"
+                name="pickupDate"
+                value={formData.pickupDate}
+                onChange={(e) =>
+                    setFormData((prev) => ({ ...prev, pickupDate: e.target.value }))
+                }
+                className="w-full p-2 rounded bg-gray-800 border border-gray-700"
+                required
+                />
+
+                {/* Return date */}
+                <input
+                type="date"
+                name="returnDate"
+                value={formData.returnDate}
+                onChange={(e) =>
+                    setFormData((prev) => ({ ...prev, returnDate: e.target.value }))
+                }
+                className="w-full p-2 rounded bg-gray-800 border border-gray-700"
+                required
+                />
+
+                <button
+                    type="submit"
+                    className="w-full bg-blue-600 hover:bg-blue-700 p-2 rounded font-semibold"
+                >
+                    Confirm Reservation
+                </button>
+            </form>
+
+            {/* Temporary reservation list */}
+            {reservations.map((r, i) => {
+            const car = mockCars.find(c => c.id.toString() === r.carId);
+            const imagePath = car?.image ? `/cars/${car.image}` : "/DefaultCarImage.png";
+
+            return (
+                <div 
+                key={i}
+                className="border-t border-gray-700 py-3 text-sm flex items-center justify-between gap-3"
+                >
+                <div className="flex items-center gap-3">
+                    <img
+                    src={imagePath}
+                    alt={`${car?.make ?? "Car"} ${car?.model ?? ""}`}
+                    width={100}
+                    height={60}
+                    style={{ borderRadius: "6px", objectFit: "cover" }}
+                    />
+                    <div>
+                    <strong>{r.name}</strong> reserved{" "}
+                    <b>
+                        {car?.make} {car?.model}
+                    </b>{" "}
+                    ({car?.year})
+                    <br />
+                    from {r.pickupDate} → {r.returnDate} (${car?.pricePerDay}/day)
+                    </div>
+                </div>
+
+                {/* Cancel button */}
+                <button
+                    onClick={() => handleCancel(i)}
+                    className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm font-medium"
+                >
+                    Cancel
+                </button>
+                </div>
+            );
+            })}
+        </main>
+    );
+}
+```
+
+---
+
+Connor Davidson – UI-4 (View Rental History)
 **Overview:**  
 Reservation page implemented under `/src/app/reservations/page.tsx`. Mock data works show shows under users reservations tab
 
@@ -174,20 +418,6 @@ Reservation page implemented under `/src/app/reservations/page.tsx`. Mock data w
         </section>
       )}
     </div>
-```
-
----
-
-### Person X – UI-4 (View Rental History)
-**Overview:**  
-(write notes here)
-
-**Files Modified:**
-- 
-
-**Code Snippet:**  
-```tsx
-// fill code here
 ```
 
 ---
