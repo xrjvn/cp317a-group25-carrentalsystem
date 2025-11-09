@@ -35,7 +35,7 @@ These features complete the basic customer lifecycle for booking usage. Users ca
 
 | Story ID | Story Title | Points | Priority | Assigned To | Tasks | Status |
 |----------|-------------|--------|----------|-------------|-------|--------|
-| UI-3 | Cancel Reservation | 3 | Medium | <Sam Oreskovic> | Implement remove reservation from mock DB | Completed |
+| UI-3 | Cancel Reservation | 3 | Medium | Sam Oreskovic | Implement remove reservation from mock DB | Completed |
 | UI-4 | View Rental History | 2 | Low | <NAME> | Show past rentals from mock DB | Completed |
 | UI-5 | Modify Reservation | 5 | Medium | <NAME> | Update reservation record in mock DB | In Progress |
 | UI-6 | Account / Profile | 5 | Medium | Arjun Singh | Profile page + mock store setup completed | Completed |
