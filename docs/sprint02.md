@@ -248,7 +248,10 @@ Reservation page implemented under `/src/app/reservations/page.tsx`. Mock data w
 
 **Files Modified:**
 - `/src/app/reservations/page.tsx`  (created)
-- `/src/data/mockReservations.ts` (created)
+
+- New Modifications:
+  Data from reservations is now reserved under Context/reservationContext and is functional under My Reservations tab.
+  User is able to see, modift and cancel current active bookings. The user is also able to see cancelled bookings (If they had any)
 
 
 **Code Snippet:**  
