@@ -704,6 +704,41 @@ reservations/page.tsx
 | UI-5 | Modify reservation updates stored data | Manual UI test | Pending | Person |
 ---
 
+## Testing & Review
+
+**UI-3**
+| Case | Input | Expected Result | Actual Result | Result |
+|------|--------|-----------------|----------------|--------|
+| Editing profile info | Changed name, email, license then hit "Save" | Updated values should be stored in mockStore | Values updated | PASS |
+| Save with empty name | Remove name and click save | Should require user input | Alert stops save | PASS |
+| Navigation persistence | Go to search page then back to profile | Data still present | Data was still there after returning | PASS |
+
+**UI-4**
+| Case | Input | Expected Result | Actual Result | Result |
+|------|--------|-----------------|----------------|--------|
+| No Reservations | Nothing | Showing the option to search/reserve a car | Showing both otions | PASS |
+| 1+ Reservations | Reserved a car | Showing reserved cars under active bookings | A reserved car | PASS |
+| 1+ and Cancelled Reservations | Reserving a few cars and cancelling one | Cars under active booking and cancelled reservations | Cars were under active booking and cancelled reservations | PASS |
+
+
+**UI-5**
+| Case | Input | Expected Result | Actual Result | Result |
+|------|-------|-----------------|---------------|--------|
+| Update all reservation fields successfully | Reservation ID: "RES1234567890"<br>New data: {name: "John Doe", email: "john@email.com", carId: "2", pickupDate: "2025-12-01", returnDate: "2025-12-05"} | Reservation with ID "RES1234567890" should have all fields updated, while preserving id, status, and bookingDate | Reservation updated correctly with new values, original id/status/bookingDate preserved | PASS |
+| Modify button visible for active reservations | View reservations page with active bookings | "Modify" button displayed beside "Cancel" button for each active reservation | Modify button visible and correctly positioned | PASS |
+| Modify button link contains correct reservation ID | Click modify button for reservation with ID "RES1234567890" | URL should be `/modify?reservationId=RES1234567890` | URL contains correct reservation ID | PASS |
+| Complete modify flow | 1. View reservations page<br>2. Click Modify on active reservation<br>3. Change name and dates<br>4. Submit form | Reservation updated in context, changes reflected on reservations page | Complete flow works, changes persist and display correctly | PASS |
+| Modify with same dates | Update reservation with same pickup and return dates | Should accept same dates (valid case) | Same dates accepted correctly | PASS |
+|Modify with very long name | Repeated letters 200 times | Form should accept long name, update reservation | Long name accepted and saved | PASS |
+**UI-6**
+| Case | Input | Expected Result | Actual Result | Result |
+|------|--------|-----------------|----------------|--------|
+| Editing profile info | Changed name, email, license then hit "Save" | Updated values should be stored in mockStore | Values updated | PASS |
+| Save with empty name | Remove name and click save | Should require user input | Alert stops save | PASS |
+| Navigation persistence | Go to search page then back to profile | Data still present | Data was still there after returning | PASS |
+
+
+
 ## **5. Sprint Review & Reflection**
 **Completed:**  
 - UI-6 (Account/Profile) Implemented and tested successfully. Profile feature working with mock in-memory storage.
