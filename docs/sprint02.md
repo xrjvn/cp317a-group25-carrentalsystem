@@ -732,7 +732,6 @@ reservations/page.tsx
 |Modify with very long name | Repeated letters 200 times | Form should accept long name, update reservation | Long name accepted and saved | PASS |
 **UI-6**
 | Case | Input | Expected Result | Actual Result | Result |
-|------|--------|-----------------|----------------|--------|
 | Editing profile info | Changed name, email, license then hit "Save" | Updated values should be stored in mockStore | Values updated | PASS |
 | Save with empty name | Remove name and click save | Should require user input | Alert stops save | PASS |
 | Navigation persistence | Go to search page then back to profile | Data still present | Data was still there after returning | PASS |
