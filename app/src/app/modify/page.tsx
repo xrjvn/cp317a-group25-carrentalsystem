@@ -1,0 +1,199 @@
+"use client";
+import React, { useState, useEffect } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
+import { mockCars } from "@/app/data/mockCars";
+import Image from "next/image";
+import { useReservations } from "../context/ReservationContext";
+
+export default function ModifyPage() {
+    const searchParams = useSearchParams();
+    const router = useRouter();
+    const reservationId = searchParams.get('reservationId');
+    
+    const { reservations, updateReservation } = useReservations();
+    
+    const reservation = reservations.find(r => r.id === reservationId);
+    
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        carId: "",
+        pickupDate: "",
+        returnDate: "",
+    });
+
+    // Pre-fill form with existing reservation data
+    useEffect(() => {
+        if (reservation) {
+            setFormData({
+                name: reservation.name,
+                email: reservation.email,
+                carId: reservation.carId,
+                pickupDate: reservation.pickupDate,
+                returnDate: reservation.returnDate,
+            });
+        }
+    }, [reservation]);
+
+    // Redirect if reservation not found
+    useEffect(() => {
+        if (!reservationId || !reservation) {
+            router.push('/reservations');
+        }
+    }, [reservationId, reservation, router]);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (!reservationId) {
+            alert("Reservation ID is missing.");
+            return;
+        }
+
+        if (new Date(formData.returnDate) < new Date(formData.pickupDate)) {
+            alert("Return date cannot be earlier than pickup date.");
+            return;
+        }
+
+        const selectedCar = mockCars.find((c) => c.id.toString() === formData.carId);
+        if (!selectedCar) {
+            alert("Please select a valid car option.");
+            return;
+        }
+
+        updateReservation(reservationId, {
+            name: formData.name,
+            email: formData.email,
+            carId: formData.carId,
+            pickupDate: formData.pickupDate,
+            returnDate: formData.returnDate,
+        });
+
+        alert(`Reservation updated for ${selectedCar.make} ${selectedCar.model}!`);
+        router.push('/reservations');
+    };
+
+    if (!reservation) {
+        return null; // Will redirect in useEffect
+    }
+
+    return (
+        <main className="flex flex-col items-center p-8 min-h-screen bg-grey-500 text-white">
+            <h1 className="text-4xl font-bold mb-6 text-black">Modify Reservation</h1>
+
+            {/* Selected Car Preview */}
+            {formData.carId && (() => {
+                const selectedCar = mockCars.find(car => car.id.toString() === formData.carId);
+                return selectedCar ? (
+                    <div className="bg-gray-800 p-4 rounded-xl mb-6 max-w-md w-full">
+                        <h2 className="text-lg font-semibold mb-2 text-blue-400">Selected Car:</h2>
+                        <div className="flex items-center space-x-4">
+                            <div className="w-24 h-16 rounded-lg overflow-hidden">
+                                <Image
+                                src={`/cars/${selectedCar.image}`}
+                                alt={`${selectedCar.make} ${selectedCar.model}`}
+                                width={128}
+                                height={128}
+                                className="object-cover w-full h-full rounded-lg"
+                                onError={(e) => (e.currentTarget.src = "/DefaultCarImage.png")}
+                                />
+                            </div>
+                            <div>
+                                <h3 className="font-semibold">{selectedCar.year} {selectedCar.make} {selectedCar.model}</h3>
+                                <p className="text-green-400 font-bold">${selectedCar.pricePerDay}/day</p>
+                                <p className="text-sm text-gray-400">{selectedCar.location}</p>
+                            </div>
+                        </div>
+                    </div>
+                ) : null;
+            })()}
+
+            {/* Form */}
+            <form
+                onSubmit={handleSubmit}
+                className="bg-gray-900 p-6 rounded-2xl shadow-lg max-w-md w-full space-y-4"
+            >
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Full Name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full p-2 rounded bg-gray-800 border border-gray-700"
+                    required
+                />
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full p-2 rounded bg-gray-800 border border-gray-700"
+                    required
+                />
+                
+                {/* Dropdown populated from mockCars dataset */}
+                <select
+                name="carId"
+                value={formData.carId}
+                onChange={handleChange}
+                className="w-full p-2 rounded bg-gray-800 border border-gray-700"
+                required
+                >
+                <option value="">Select a Car</option>
+                {mockCars.map((car) => (
+                    <option key={car.id} value={car.id.toString()}>
+                    {car.make} {car.model} (${car.pricePerDay}/day)
+                    </option>
+                ))}
+                </select>
+
+                {/* Pickup date */}
+                <input
+                type="date"
+                name="pickupDate"
+                value={formData.pickupDate}
+                onChange={(e) =>
+                    setFormData((prev) => ({ ...prev, pickupDate: e.target.value }))
+                }
+                className="w-full p-2 rounded bg-gray-800 border border-gray-700"
+                required
+                />
+
+                {/* Return date */}
+                <input
+                type="date"
+                name="returnDate"
+                value={formData.returnDate}
+                onChange={(e) =>
+                    setFormData((prev) => ({ ...prev, returnDate: e.target.value }))
+                }
+                className="w-full p-2 rounded bg-gray-800 border border-gray-700"
+                required
+                />
+
+                <div className="flex gap-4">
+                    <button
+                        type="submit"
+                        className="flex-1 bg-blue-600 hover:bg-blue-700 p-2 rounded font-semibold"
+                    >
+                        Update Reservation
+                    </button>
+                    <button
+                        type="button"
+                        onClick={() => router.push('/reservations')}
+                        className="flex-1 bg-gray-600 hover:bg-gray-700 p-2 rounded font-semibold"
+                    >
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </main>
+    );
+}
+

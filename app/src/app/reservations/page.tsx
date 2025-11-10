@@ -62,15 +62,23 @@ export default function ReservationsPage() {
                     </div>
                   </div>
 
-                  {/* Cancel Button */}
-                  <button
-                    onClick={() => {
-                      if (confirm("Cancel this reservation?")) removeReservation(reservation.id);
-                    }}
-                    className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm font-medium transition"
-                  >
-                    Cancel
-                  </button>
+                  {/* Action Buttons */}
+                  <div className="flex gap-2">
+                    <Link
+                      href={`/modify?reservationId=${reservation.id}`}
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm font-medium transition"
+                    >
+                      Modify
+                    </Link>
+                    <button
+                      onClick={() => {
+                        if (confirm("Cancel this reservation?")) removeReservation(reservation.id);
+                      }}
+                      className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm font-medium transition"
+                    >
+                      Cancel
+                    </button>
+                  </div>
                 </div>
 
               );

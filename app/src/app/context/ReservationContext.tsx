@@ -7,6 +7,7 @@ interface ReservationContextType {
   reservations: Reservation[];
   addReservation: (reservation: Omit<Reservation, 'id' | 'status' | 'bookingDate'>) => void;
   updateReservationStatus: (id: string, status: 'active' | 'completed' | 'cancelled') => void;
+  updateReservation: (id: string, reservation: Omit<Reservation, 'id' | 'status' | 'bookingDate'>) => void;
   removeReservation: (id: string) => void;
 }
 
@@ -34,6 +35,16 @@ export function ReservationProvider({ children }: { children: ReactNode }) {
     );
   };
 
+  const updateReservation = (id: string, reservationData: Omit<Reservation, 'id' | 'status' | 'bookingDate'>) => {
+    setReservations((prev) =>
+      prev.map((reservation) =>
+        reservation.id === id
+          ? { ...reservation, ...reservationData }
+          : reservation
+      )
+    );
+  };
+
   const removeReservation = (id: string) => {
     setReservations((prev) => prev.filter((reservation) => reservation.id !== id));
   };
@@ -44,6 +55,7 @@ export function ReservationProvider({ children }: { children: ReactNode }) {
         reservations,
         addReservation,
         updateReservationStatus,
+        updateReservation,
         removeReservation,
       }}
     >
