@@ -68,7 +68,7 @@ export default function ProfilePage() {
   const save = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     mockStore.user = { name, email, license };
-    alert("✅ Profile saved (mock).");
+    alert("Profile saved (mock).");
   };
 
   return (
@@ -428,9 +428,8 @@ export function useReservations() {
 - UI-5 ()
 
 **Next Sprint:**  
-- Move persistence into real DB file
-- 
-- 
+- REP-1: Car Usage Report (show which cars are most frequently rented)
+- REP-2: Daily Rentals Report (show daily rental totals / trends)
 
 ---
 
