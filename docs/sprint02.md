@@ -113,7 +113,7 @@ export default function ProfilePage() {
 - Added working Cancel buttons beside each active booking in `reservations/page.tsx`. Added web confirmation prompts to confirm each cancellation on this page.
 - Altered the image paths in `data/mockCars.ts`, ensuring car images are shown on each reservation, regardless of their page.
 - Verified that deleting a reservation on `/reservations` reflects on `/reserve`, and vice-versa, using context in `context/ReservationContext.tsx`.
-- Edited `search/page.tsx` to allow for the new image paths after conflicts were thrown.
+- After adjusting the image paths, edits were needed on `search/page.tsx` to allow for the new image paths.
   
 
 **Files Modified:**
