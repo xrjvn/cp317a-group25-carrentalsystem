@@ -27,7 +27,7 @@ Deliver working user account + rental management features.
 - Account / Profile (UI-6) to store in mock DB (memory file store)
 
 **Why these stories:**  
-These features complete the basic customer lifecycle for booking usage. Users can now manage, see, modify, and cancel their own past bookings.
+We chose these stories because Sprint 02 focuses on completing the full reservation lifecycle for a user. In Sprint 01, we worked on allowing customers to log in, search and reserve; now Sprint 02 adds the actual management functionality that allows a user to manage those reservations after creation. The emphasis was on connecting UI -> state -> interaction, rather than just isolated screens, as this is the first sprint in which state consistency across numerous pages was important. By completing Profile, Cancel, Modify, and History, we now have the groundwork for a fully operational customer experience that mimics the end to end behavior of a real rental platform. These features get us ready for Sprint 03 where we will start using persistence beyond mock memory and implement real database-level storage to store user and reservation data in between sessions.
 
 ---
 
