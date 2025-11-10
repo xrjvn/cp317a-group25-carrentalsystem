@@ -740,9 +740,9 @@ reservations/page.tsx
 
 ## **5. Sprint Review & Reflection**
 **Completed:**  
-- UI-6 (Account/Profile) Implemented and tested successfully. Profile feature working with mock in-memory storage.
-- UI-3 (Cancelling Reservations) Implimented and tested successfully. Instantly deletes the chosen reservation from all pages.
-- UI-4 (Reservation History) Implemented and tested successfully. Shows users reservation history and active reservations (mock data)
+- UI-6 (Account/Profile) The Profile page lets users review and adjust their personal information. The inputs are pre-filled with their current data so they don’t have to re-enter everything every time. Saving updates the mock memory store so values remain consistent when going to other pages and coming back. This part helped finalize the identity side of the system, and now the platform feels more like a real account-based application instead of just loose screens.
+- UI-3 (Cancelling Reservations) This feature lets users cancel a reservation instantly from either Reserve or the My Reservations page. Both pages reflect the change right away because of the shared reservation state. This part was important because this is a very common action users actually do on real rental apps. We learned a lot about making sure actions weren’t just UI only, but actually tied into our shared state and cleaned up old data properly.
+- UI-4 (Reservation History) The History view separates active bookings vs cancelled bookings so users can see everything they’ve done in one place. It also handles the scenario where no bookings exist yet, and guides the user to reserve or search instead of showing empty UI. This feature helped us verify that our state management approach was actually usable/readable from multiple screens, which was a major difference from Sprint 01.
 - UI-5 (Modify Reservation) Added a modify reservation feature that lets users edit active ongoing reservations from the "My Reservations" page. Some of the strengths of this component is the consistent design, the modification page has the same form/fields as the reserve page. The modify form comes with pre-filled data from previous reservation with gives more clarity. The component passes validation and error handling checks such is required fields, invalid IDs, missing IDs etc. Lastly the navigation is layed out very simple and visble.
 
 **Next Sprint:**  
