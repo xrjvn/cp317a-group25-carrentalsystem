@@ -43,7 +43,7 @@ We chose these stories because Sprint 02 focuses on completing the full reservat
 ---
 
 ## 3. Implementation Progress
-**Sprint Integration Summary**
+**Sprint Integration Summary:**
 During this sprint we introduced a shared global reservation state so reservation data is stored in one place instead of per-page. This allowed features like cancel, modify, and history to read/write from the same source, which means the reservation data now stays consistent no matter what page the user is on. This was the first sprint where the system started behaving like a real connected application instead of separate UI screens. The result is that booking, viewing history, and cancelling all now impact each other properly, which moves the project closer to an actual functional rental flow rather than isolated prototypes.
 
 ### Arjun Singh – UI-6 (Account/Profile)
