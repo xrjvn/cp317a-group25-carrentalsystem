@@ -172,45 +172,6 @@ export default function ReservePage() {
                 </button>
             </form>
 
-            {/* Temporary reservation list */}
-            {reservations.map((r, i) => {
-            const car = mockCars.find(c => c.id.toString() === r.carId);
-            const imagePath = car?.image ? `/cars/${car.image}` : "/DefaultCarImage.png";
-
-            return (
-                <div 
-                key={i}
-                className="border-t border-gray-700 py-3 text-sm flex items-center justify-between gap-3"
-                >
-                <div className="flex items-center gap-3">
-                    <img
-                    src={imagePath}
-                    alt={`${car?.make ?? "Car"} ${car?.model ?? ""}`}
-                    width={100}
-                    height={60}
-                    style={{ borderRadius: "6px", objectFit: "cover" }}
-                    />
-                    <div>
-                    <strong>{r.name}</strong> reserved{" "}
-                    <b>
-                        {car?.make} {car?.model}
-                    </b>{" "}
-                    ({car?.year})
-                    <br />
-                    from {r.pickupDate} → {r.returnDate} (${car?.pricePerDay}/day)
-                    </div>
-                </div>
-
-                {/* Cancel button */}
-                <button
-                    onClick={() => handleCancel(i)}
-                    className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm font-medium"
-                >
-                    Cancel
-                </button>
-                </div>
-            );
-            })}
         </main>
     );
 }

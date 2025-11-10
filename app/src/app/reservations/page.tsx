@@ -6,7 +6,7 @@ import { useReservations } from '../context/ReservationContext';
 import { mockCars } from '../data/mockCars';
 
 export default function ReservationsPage() {
-  const { reservations, removeReservation } = useReservations();
+  const { reservations, updateReservationStatus } = useReservations();
 
   // Filter active bookings
   const activeBookings = reservations.filter(r => r.status === 'active');
@@ -72,7 +72,7 @@ export default function ReservationsPage() {
                     </Link>
                     <button
                       onClick={() => {
-                        if (confirm("Cancel this reservation?")) removeReservation(reservation.id);
+                        if (confirm("Cancel this reservation?")) updateReservationStatus(reservation.id, "cancelled");
                       }}
                       className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm font-medium transition"
                     >
@@ -117,17 +117,6 @@ export default function ReservationsPage() {
                     </div>
                   </div>
 
-                  {/* Cancel Button */}
-                  <button
-                    onClick={() => {
-                      if (confirm("Are you sure you want to cancel this reservation?")) {
-                        removeReservation(reservation.id);
-                      }
-                    }}
-                    className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm font-medium transition"
-                  >
-                    Cancel
-                  </button>
                 </div>
 
               );
