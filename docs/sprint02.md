@@ -714,6 +714,9 @@ reservations/page.tsx
 **Next Sprint:**  
 - REP-1: Car Usage Report (show which cars are most frequently rented)
 - REP-2: Daily Rentals Report (show daily rental totals / trends)
+- REP-3: Verify if the selected car's available when modifying for new dates. ie. cannot book on same dates as other bookings. 
+- REP-4: Use toast notifcations for browser alerts.
+
 
 ---
 
