@@ -37,7 +37,7 @@ We chose these stories because Sprint 02 focuses on completing the full reservat
 |----------|-------------|--------|----------|-------------|-------|--------|
 | UI-3 | Cancel Reservation | 3 | Medium | Sam Oreskovic | Implement remove reservation from mock DB | Completed |
 | UI-4 | View Rental History | 2 | Low | Connor Davison | Show past rentals from mock DB | Completed |
-| UI-5 | Modify Reservation | 5 | Medium | Khush Patel | Update reservation record in mock DB | In Progress |
+| UI-5 | Modify Reservation | 5 | Medium | Khush Patel | Update reservation record in mock DB | Completed |
 | UI-6 | Account / Profile | 5 | Medium | Arjun Singh | Profile page + mock store setup completed | Completed |
 
 ---
