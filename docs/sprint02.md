@@ -412,7 +412,7 @@ export function useReservations() {
 ---
 ### Khush Patel – UI-5 (Modify Reservation)
 **Overview:**  
-- We added a modify reservation feature that lets users modify their reservations from the "My Reservations" page. You are able to modify all the same inputs as you did before, whilst making the initial reservation.
+- I added a modify reservation feature that lets users modify their reservations from the "My Reservations" page. You are able to modify all the same inputs as you did before, whilst making the initial reservation.
 
 **Files Modified:**
 - ReservationContext.tsx
