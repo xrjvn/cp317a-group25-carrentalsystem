@@ -709,7 +709,7 @@ reservations/page.tsx
 - UI-6 (Account/Profile) Implemented and tested successfully. Profile feature working with mock in-memory storage.
 - UI-3 (Cancelling Reservations) Implimented and tested successfully. Instantly deletes the chosen reservation from all pages.
 - UI-4 (Reservation History) Implemented and tested successfully. Shows users reservation history and active reservations (mock data)
-- UI-5 (Modify Reservation)
+- UI-5 (Modify Reservation) Added a modify reservation feature that lets users edit active ongoing reservations from the "My Reservations" page. Some of the strengths of this component is the consistent design, the modification page has the same form/fields as the reserve page. The modify form comes with pre-filled data from previous reservation with gives more clarity. The component passes validation and error handling checks such is required fields, invalid IDs, missing IDs etc. Lastly the navigation is layed out very simple and visble.
 
 **Next Sprint:**  
 - REP-1: Car Usage Report (show which cars are most frequently rented)
