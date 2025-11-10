@@ -109,16 +109,18 @@ export default function ProfilePage() {
 
 ### Sam Oreskovic – UI-3 (Cancel Reservation)
 **Overview:**  
-- Modified `reserve/page.tsx` to include a cancel button inside the temporary reservation list. Connected to `removeReservation()` for easy deletion
+- Modified `reserve/page.tsx` to include a cancel button inside the temporary reservation list. Connected to `removeReservation()` for easy deletion.
 - Added working Cancel buttons beside each active booking in `reservations/page.tsx`. Added web confirmation prompts to confirm each cancellation on this page.
 - Altered the image paths in `data/mockCars.ts`, ensuring car images are shown on each reservation, regardless of their page.
-- Verified that deleting a reservation on `/reservations` reflects on `/reserve`, and vice-versa, using context in `context/ReservationContext.tsx`
+- Verified that deleting a reservation on `/reservations` reflects on `/reserve`, and vice-versa, using context in `context/ReservationContext.tsx`.
+- Edited `search/page.tsx` to allow for the new image paths after conflicts were thrown.
   
 
 **Files Modified:**
 - `/src/app/reserve/page.tsx`  (modified)
 - `/src/app/reservations/page.tsx` (modified)
 - `/src/app/data/mockCars` (modified)
+- `/src/app/search/page.tsx` (modified)
 
 **Code Snippet:**  
 ```tsx
@@ -213,6 +215,14 @@ useEffect(() => {
     })}
   </div>
 )}
+
+// search/page.tsx //
+ <Image
+   src={car.image ? `/cars/${car.image}` : "/DefaultCarImage.png"}
+   alt={`${car.make ?? "Car"} ${car.model ?? ""}`}
+   fill
+   className="object-cover"
+ />
 ```
   
   **Test Cases:**
