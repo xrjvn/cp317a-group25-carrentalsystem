@@ -706,9 +706,9 @@ reservations/page.tsx
 
 ## **5. Sprint Review & Reflection**
 **Completed:**  
-- UI-6 (Account/Profile) implemented and tested successfully. Profile feature working with mock in-memory storage.
-- UI-3 ()
-- UI-4 (Reservation History) implemented and testeed successfully. Shows users reservation history and active reservations (mock data)
+- UI-6 (Account/Profile) Implemented and tested successfully. Profile feature working with mock in-memory storage.
+- UI-3 (Cancelling Reservations) Implimented and tested successfully. Instantly deletes the chosen reservation from all pages.
+- UI-4 (Reservation History) Implemented and tested successfully. Shows users reservation history and active reservations (mock data)
 - UI-5 (Modify Reservation)
 
 **Next Sprint:**  
