@@ -683,6 +683,14 @@ reservations/page.tsx
   </button>
 </div>
 ```
+| Case | Input | Expected Result | Actual Result | Result |
+|------|-------|-----------------|---------------|--------|
+| Update all reservation fields successfully | Reservation ID: "RES1234567890"<br>New data: {name: "John Doe", email: "john@email.com", carId: "2", pickupDate: "2025-12-01", returnDate: "2025-12-05"} | Reservation with ID "RES1234567890" should have all fields updated, while preserving id, status, and bookingDate | Reservation updated correctly with new values, original id/status/bookingDate preserved | PASS |
+| Modify button visible for active reservations | View reservations page with active bookings | "Modify" button displayed beside "Cancel" button for each active reservation | Modify button visible and correctly positioned | PASS |
+| Modify button link contains correct reservation ID | Click modify button for reservation with ID "RES1234567890" | URL should be `/modify?reservationId=RES1234567890` | URL contains correct reservation ID | PASS |
+| Complete modify flow | 1. View reservations page<br>2. Click Modify on active reservation<br>3. Change name and dates<br>4. Submit form | Reservation updated in context, changes reflected on reservations page | Complete flow works, changes persist and display correctly | PASS |
+| Modify with same dates | Update reservation with same pickup and return dates | Should accept same dates (valid case) | Same dates accepted correctly | PASS |
+|Modify with very long name | Repeated letters 200 times | Form should accept long name, update reservation | Long name accepted and saved | PASS |
 
 
 ---
