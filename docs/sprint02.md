@@ -730,6 +730,9 @@ reservations/page.tsx
 | Complete modify flow | 1. View reservations page<br>2. Click Modify on active reservation<br>3. Change name and dates<br>4. Submit form | Reservation updated in context, changes reflected on reservations page | Complete flow works, changes persist and display correctly | PASS |
 | Modify with same dates | Update reservation with same pickup and return dates | Should accept same dates (valid case) | Same dates accepted correctly | PASS |
 |Modify with very long name | Repeated letters 200 times | Form should accept long name, update reservation | Long name accepted and saved | PASS |
+
+For next considerations, want to include date range validation, don't prevent selecting past dates. Verifying car availability during modifications.
+
 **UI-6**
 | Case | Input | Expected Result | Actual Result | Result |
 | Editing profile info | Changed name, email, license then hit "Save" | Updated values should be stored in mockStore | Values updated | PASS |
