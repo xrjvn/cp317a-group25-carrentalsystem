@@ -425,7 +425,7 @@ export function useReservations() {
 | Story ID | Test Description | Method | Result | Verified By |
 |-----------|------------------|---------|---------|--------------|
 | UI-6 | Profile update stores edited data | Manual UI test | Complete | Arjun Singh |
-| UI-3 | Cancel reservation removes entry | Manual UI test | Pending | Person |
+| UI-3 | Cancel reservation removes entry | Manual UI test | Complete | Sam Oreskovic |
 | UI-4 | Rental history loads & shows correctly | Manual UI test | Complete | Connor Davison |
 | UI-5 | Modify reservation updates stored data | Manual UI test | Pending | Person |
 ---
