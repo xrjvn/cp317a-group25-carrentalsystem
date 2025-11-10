@@ -244,12 +244,12 @@ export default function SearchPage() {
                   {searchResults.map((car) => (
                   <div key={car.id} className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
                     <div className="h-48 relative">
-                      <Image
-                        src={car.image}
-                        alt={`${car.make} ${car.model}`}
-                        fill
-                        className="object-cover"
-                      />
+                    <Image
+                      src={car.image ? `/cars/${car.image}` : "/DefaultCarImage.png"}
+                      alt={`${car.make ?? "Car"} ${car.model ?? ""}`}
+                      fill
+                      className="object-cover"
+                    />
                     </div>
                     <div className="p-4">
                       <div className="flex justify-between items-start mb-2">
