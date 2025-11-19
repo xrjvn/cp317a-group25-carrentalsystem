@@ -28,7 +28,7 @@ This sprint focuses on improving the stability and long-term usability of the sy
 - Apply UI consistency fixes across major screens
 
 ### Why these stories  
-This sprint transitions the project from a prototype to a system that actually *remembers* users and reservations. Persistence is required before we can build reports, manager views, or anything that relies on stored data. UI consistency was also needed because the number of screens increased and the project began to feel disjointed. Completing these tasks sets us up for Sprint 04 where reporting tools will be built on top of the data saved this sprint.
+This sprint transitions the project from a prototype to a system that actually remembers users and reservations. Persistence is required before we can build reports, manager views, or anything that relies on stored data. UI consistency was also needed because the number of screens increased and the project began to feel disjointed. Completing these tasks sets us up for Sprint 04 where reporting tools will be built on top of the data saved this sprint.
 
 ---
 
@@ -36,10 +36,10 @@ This sprint transitions the project from a prototype to a system that actually *
 
 | Story ID | Story Title | Points | Priority | Assigned To | Tasks | Status |
 |----------|-------------|--------|----------|-------------|-------|--------|
-| DB-1 | Persistent File Store | 5 | High | **PersonX** | Load/save system for reservations + users | *In Progress* |
-| AUTH-1 | Login + Sign Up (persistent) | 5 | High | **Arjun** | Connect login + signup + profile to stored data | *In Progress* |
+| SYS-1 | Persistent File Store | 5 | High | **PersonX** | Load/save system for reservations & users | *In Progress* |
+| SEC-2 | Login + Sign Up (persistent) | 5 | High | **Arjun** | Connect login & signup & profile to stored data | *In Progress* |
 | UI-7 | UI Cleanup + Layout Improvements | 3 | Medium | **PersonX** | Improve layout, buttons, spacing, card styling | *In Progress* |
-| INT-1 | System-Wide Integration (Sprint Requirement) | 3 | High | **Everyone** | Ensure all features interact with shared persistent state | Ongoing |
+| SYS-2 | System-Wide Integration (Sprint Requirement) | 3 | High | **Everyone** | Ensure all features interact with shared persistent state | Ongoing |
 
 ---
 
@@ -52,7 +52,7 @@ This was the first sprint where the team had to coordinate how features interact
 
 ---
 
-## **Arjun Singh – AUTH-1 (Persistent Login + Sign-Up + Profile)**
+## **Arjun Singh – SEC-2 (Persistent Login + Sign-Up + Profile)**
 
 ### **Overview**
 My main task this sprint was to connect authentication and the Profile page to our new persistent data system. Previously, login/sign-up worked using mock objects that reset when the page refreshed. In this sprint, users can register, log in, and update their profile, and all changes are saved permanently into the new file-based storage.
@@ -82,7 +82,7 @@ My main task this sprint was to connect authentication and the Profile page to o
 
 ---
 
-## **PersonX – DB-1 Persistent File Store**  
+## **PersonX – SYS-1 Persistent File Store**  
 *(PLACEHOLDER – fill this in)*  
 Write:  
 - Overview  
@@ -97,7 +97,7 @@ Write:
 
 ---
 
-## **PersonX – Integration Testing + Reservation UI Adjustments**  
+## **PersonX – Integration Testing & Reservation UI Adjustments**  
 *(PLACEHOLDER – fill this in)*  
 
 ---
@@ -116,10 +116,10 @@ Write:
 
 | Story ID | Test Description | Method | Result | Verified By |
 |----------|------------------|--------|--------|--------------|
-| AUTH-1 | Auth uses persistent user store | Manual UI test | Complete | Arjun |
-| DB-1 | Reservations/users load/save correctly | Manual | Pending | PersonX |
+| SEC-2 | Auth uses persistent user store | Manual UI test | Complete | Arjun |
+| SYS-1 | Reservations/users load/save correctly | Manual | Pending | PersonX |
 | UI-7 | UI improvements applied consistently | Visual/manual | Pending | PersonX |
-| INT-1 | Features interact with shared persistent state | Manual | Ongoing | Team |
+| SYS-2 | Features interact with shared persistent state | Manual | Ongoing | Team |
 
 ---
 
