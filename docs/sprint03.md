@@ -23,7 +23,7 @@ This sprint focuses on improving the stability and long-term usability of the sy
 ### Objectives  
 - Implement simple file-based persistence for users and reservations
 - Ensure all reservation actions (add, cancel, modify) update the persistent store
-- Connect login + sign-up pages to stored user accounts
+- Connect login and sign-up pages to stored user accounts
 - Link the Profile page to stored user information
 - Apply UI consistency fixes across major screens
 
