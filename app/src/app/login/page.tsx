@@ -1,42 +1,45 @@
 "use client";
+
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
+  const router = useRouter();
 
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (username === "testuser" && password === "test123") {
-      setMessage("✅ Login Successful – Redirecting to Dashboard...");
-    } else {
-      setMessage("❌ Invalid credentials");
+
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+
+    const user = users.find((u: any) => u.email === email);
+
+    if (!user) {
+      alert("No user with that email");
+      return;
     }
+
+    if (user.password !== password) {
+      alert("Incorrect password");
+      return;
+    }
+
+    localStorage.setItem("currentUser", JSON.stringify(user));
+    router.push("/profile");
   };
 
   return (
-    <main className="flex flex-col items-center justify-center h-screen bg-gray-100">
-      <form onSubmit={handleLogin} className="bg-white p-6 rounded-2xl shadow-md w-80">
-        <h1 className="text-2xl font-semibold mb-4 text-center">Sign In</h1>
-        <input
-          type="text"
-          placeholder="Username"
-          className="border w-full mb-3 p-2 rounded"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          className="border w-full mb-3 p-2 rounded"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit" className="bg-blue-500 text-white w-full py-2 rounded">
+    <main className="max-w-sm mx-auto p-6">
+      <h1 className="text-2xl font-bold mb-4">Login</h1>
+
+      <form onSubmit={handleLogin} className="space-y-4">
+        <input type="email" className="w-full border p-2 rounded" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
+        <input type="password" className="w-full border p-2 rounded" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+
+        <button className="w-full bg-blue-600 text-white p-2 rounded">
           Login
         </button>
-        <p className="mt-3 text-center">{message}</p>
       </form>
     </main>
   );

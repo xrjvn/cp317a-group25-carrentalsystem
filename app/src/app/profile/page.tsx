@@ -1,36 +1,57 @@
 "use client";
-import { useState } from "react";
-import { mockStore } from "../../lib/mockData";
+
+import { useState, useEffect } from "react";
 
 export default function ProfilePage() {
-  const [name, setName] = useState(mockStore.user.name);
-  const [email, setEmail] = useState(mockStore.user.email);
-  const [license, setLicense] = useState(mockStore.user.license);
+  const [user, setUser] = useState<any>(null);
 
-  const save = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    mockStore.user = { name, email, license };
-    alert("✅ Profile saved (mock).");
+  useEffect(() => {
+    const stored = localStorage.getItem("currentUser");
+    if (stored) setUser(JSON.parse(stored));
+  }, []);
+
+  const handleSave = () => {
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+
+    const updatedUsers = users.map((u: any) =>
+      u.email === user.email ? user : u
+    );
+
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+    localStorage.setItem("currentUser", JSON.stringify(user));
+
+    alert("Profile updated!");
   };
+
+  if (!user) return <p>Loading...</p>;
 
   return (
     <main className="max-w-xl mx-auto p-6">
       <h1 className="text-2xl font-bold mb-4">My Profile</h1>
-      <form onSubmit={save} className="bg-white p-4 rounded-xl shadow space-y-3">
-        <div>
-          <label className="block text-sm mb-1">Name</label>
-          <input className="border rounded w-full p-2" value={name} onChange={e=>setName(e.target.value)} />
-        </div>
-        <div>
-          <label className="block text-sm mb-1">Email</label>
-          <input className="border rounded w-full p-2" value={email} onChange={e=>setEmail(e.target.value)} />
-        </div>
-        <div>
-          <label className="block text-sm mb-1">Driver’s License</label>
-          <input className="border rounded w-full p-2" value={license} onChange={e=>setLicense(e.target.value)} />
-        </div>
-        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">Save</button>
-      </form>
+
+      <div className="space-y-4 bg-white p-4 rounded shadow">
+        <input
+          value={user.name}
+          className="w-full border p-2 rounded"
+          onChange={e => setUser({ ...user, name: e.target.value })}
+        />
+
+        <input
+          value={user.email}
+          className="w-full border p-2 rounded"
+          onChange={e => setUser({ ...user, email: e.target.value })}
+        />
+
+        <input
+          value={user.license}
+          className="w-full border p-2 rounded"
+          onChange={e => setUser({ ...user, license: e.target.value })}
+        />
+
+        <button onClick={handleSave} className="bg-blue-600 text-white p-2 rounded">
+          Save Changes
+        </button>
+      </div>
     </main>
   );
 }
