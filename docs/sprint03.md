@@ -51,7 +51,26 @@ This sprint introduced our first real persistent data system. Instead of relying
 This also made Sprint 03 the first sprint where each feature had to work with others instead of standing alone. Changes made on one page now have to show up on all the others, which required more coordination within the team. The result is a system that behaves much more like a real rental platform, with data that stays consistent as the user moves between pages
 
 ---
+## **Sam Oreskovic – SYS-1 (Persistent File Storing for Users and Reservations)**
 
+### **Overview**
+
+### **Files Modified**
+
+### **Key Work Completed**
+
+
+### **Testing**
+| Case | Input | Expected Result | Actual Result | Result |
+|------|--------|-----------------|----------------|--------|
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+
+**Verification:** 
+
+---
 ## **Arjun Singh – SEC-2 (Persistent Login & Sign-Up & Profile)**
 
 ### **Overview**
