@@ -18,17 +18,17 @@
 ---
 
 ## 1. Sprint Goal
-This sprint focuses on improving the stability and long-term usability of the system. In Sprint 02 we completed the full reservation lifecycle, but all data was stored in temporary mock memory. Sprint 03 moves toward real persistence, improves state reliability across pages, and tightens the UI design so the application feels unified.  
+This sprint focused on improving the long-term stability of the system. In Sprint 02, we completed the full reservation lifecycle, but everything still relied on temporary mock memory. Sprint 03 introduces persistent storage, improves consistency across pages, and cleans up UI elements so the application feels more unified and reliable.
 
 ### Objectives  
-- Implement simple file-based persistence for users and reservations
-- Ensure all reservation actions (add, cancel, modify) update the persistent store
-- Connect login and sign-up pages to stored user accounts
-- Link the Profile page to stored user information
+- Add a simple persistence layer for users and reservations
+- Make sure reservation actions (create, modify, cancel) update saved data
+- Connect login and sign-up to stored user accounts
+- Link the Profile page to persistent user data
 - Apply UI consistency fixes across major screens
 
 ### Why these stories  
-This sprint transitions the project from a prototype to a system that actually remembers users and reservations. Persistence is required before we can build reports, manager views, or anything that relies on stored data. UI consistency was also needed because the number of screens increased and the project began to feel disjointed. Completing these tasks sets us up for Sprint 04 where reporting tools will be built on top of the data saved this sprint.
+These stories move the project from a front-end demo into something closer to a functioning system. Persistence is a must before we can build manager/admin features or reporting in the next sprint. UI consistency was also important because the project now has enough pages that inconsistent styling breaks the experience. Completing these tasks sets a foundation for Sprint 04, where reporting features will depend heavily on the data saved this sprint
 
 ---
 
@@ -45,38 +45,36 @@ This sprint transitions the project from a prototype to a system that actually r
 
 ## 3. Implementation Progress
 
-## **Sprint Integration Summary (Required for Sprint 03)**
-This sprint introduced our first real persistent data layer. Instead of using mock data that resets on every refresh, the system now stores users and reservations in a file. This required updating login, profile, reservation creation, and reservation management so they all read from and write to the same shared source. Because of this, all pages now stay synchronized and changes made in one area immediately show up across the system.  
+## **Sprint Integration Summary**
+This sprint introduced our first real persistent data system. Instead of relying on mock data that resets on every refresh, the app can now save and load users and reservations from storage. Because of this, login, sign-up, profile editing, and reservation features now share one consistent source of truth.  
 
-This was the first sprint where the team had to coordinate how features interact with each other instead of just building isolated UI screens. The shared persistence and state management made the system feel more cohesive and closer to a real rental platform.
+This also made Sprint 03 the first sprint where each feature had to work with others instead of standing alone. Changes made on one page now have to show up on all the others, which required more coordination within the team. The result is a system that behaves much more like a real rental platform, with data that stays consistent as the user moves between pages
 
 ---
 
-## **Arjun Singh – SEC-2 (Persistent Login + Sign-Up + Profile)**
+## **Arjun Singh – SEC-2 (Persistent Login & Sign-Up & Profile)**
 
 ### **Overview**
-My main task this sprint was to connect authentication and the Profile page to our new persistent data system. Previously, login/sign-up worked using mock objects that reset when the page refreshed. In this sprint, users can register, log in, and update their profile, and all changes are saved permanently into the new file-based storage.
+My work this sprint focused on connecting the authentication pages and Profile page to the new persistent storage system. Previously, the login and sign-up pages used temporary mock data. Now, users can create an account, log in, and update their profile — and these changes are saved so they remain after refreshing or navigating away.
 
 ### **Files Modified**
-- `/src/app/login/page.tsx`  
-- `/src/app/signup/page.tsx`  
-- `/src/app/profile/page.tsx`  
-- `/src/lib/persistence.ts` (integrated user storage logic)
+- `/src/app/login/page.tsx`
+- `/src/app/signup/page.tsx`
+- `/src/app/profile/page.tsx`
 
 ### **Key Work Completed**
-- Implemented a working Sign-Up page that writes new user accounts to the persistent file  
-- Updated Login page to authenticate against stored credentials  
-- Connected Profile page to load and update the stored user object  
-- Ensured all changes remain after reload (persistent write-back)  
-- Cleaned up UI spacing and button styling for auth-related pages  
+- Created a working Sign-Up page that saves new users to persistent storage  
+- Updated Login page to authenticate against saved user data
+- Connected the Profile page so users can edit their stored information  
+- Ensured changes persist after reload
 
 ### **Testing**
 | Case | Input | Expected Result | Actual Result | Result |
 |------|--------|-----------------|----------------|--------|
-| Create new account | Email, password, license | New user added to persistent store | Saved correctly | PASS |
-| Login with existing user | Valid credentials | User logged in & redirected | Correct | PASS |
-| Update profile | Change name/email/license | Stored user object updated | Persistent update succeeded | PASS |
-| App reload | Refresh page | User info remains | Data persisted | PASS |
+| Create new account | Email, password, license | User saved to persistent store | Works correctly | PASS |
+| Login with stored user | Valid credentials | Redirect to profile | Works correctly | PASS |
+| Update profile info | Edit any field | Stored user object updated | Works correctly | PASS |
+| Page reload | Refresh browser | User still logged in | Works correctly | PASS |
 
 **Verification:** Arjun  
 
@@ -137,7 +135,7 @@ Write:
 ---
 
 ## **6. Team Blog (Update)**
-Each group member has updated **Group25-Blog.xlsx** with hours and tasks.
+All members updated **Group25-Blog.xlsx** with hours and tasks.
 
 ---
 
@@ -145,6 +143,6 @@ Each group member has updated **Group25-Blog.xlsx** with hours and tasks.
 - `Group25-Sprint03.pdf`
 - `Group25-ProductBacklog.xlsx` (updated)  
 - `Group25-Blog.xlsx` (updated)  
-- 1–3 minute demo video showing the new persistence + login/profile flow  
+- 1–3 minute demo video
 
 **Deadline:** Sunday, November 16th, 2025 @ 11:59 PM
