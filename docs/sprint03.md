@@ -126,11 +126,11 @@ Write:
 ## 5. Sprint Review & Reflection
 
 ### **Completed**
-- Persistent user storage connected to login/sign-up/profile  
-- Authentication now survives page reloads  
-- Initial setup of system-wide persistence  
-- Some UI consistency improvements  
-- Major integration step across reservation and user systems  
+- Persistent user storage connected to login/sign-up/profile
+- 
+- 
+- 
+- 
 
 ### **Reflection**
 (fill this in)
