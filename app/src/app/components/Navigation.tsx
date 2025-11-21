@@ -54,6 +54,7 @@ export default function Navigation() {
             >
               Reserve
             </Link>
+            
             {/* Profile Dropdown */}
             <div className="relative" ref={dropdownRef}>
               <button
@@ -66,9 +67,11 @@ export default function Navigation() {
               </button>
               {dropdownOpen && (
                 <div className="absolute right-0 mt-2 w-44 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                   <Link href="/signup" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Sign Up</Link>
                   <Link href="/login" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Login</Link>
                   <Link href="/profile" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</Link>
                   <Link href="/reservations" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Reservation</Link>
+        
                 </div>
               )}
             </div>

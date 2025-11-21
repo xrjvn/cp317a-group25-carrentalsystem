@@ -12,13 +12,15 @@ export default function ReservePage() {
     const searchParams = useSearchParams();
     const router = useRouter();
     const preSelectedCarId = searchParams.get('carId');
+    const preSelectedPickupDate = searchParams.get('pickupDate');
+    const preSelectedReturnDate = searchParams.get('returnDate');
     
     const [formData, setFormData] = useState({
         name: "",
         email: "",
         carId: preSelectedCarId || "",
-        pickupDate: "",
-        returnDate: "",
+        pickupDate: preSelectedPickupDate || "",
+        returnDate: preSelectedReturnDate || "",
     });
     const { reservations, addReservation, removeReservation } = useReservations();
 
@@ -29,6 +31,29 @@ export default function ReservePage() {
             setFormData(prev => ({ ...prev, carId: preSelectedCarId }));
         }
     }, [preSelectedCarId]);
+    useEffect(() => {
+        const currentUser = localStorage.getItem("currentUser");
+        if (currentUser) {
+            try {
+                const user = JSON.parse(currentUser);
+                setFormData(prev => ({
+                    ...prev,
+                    name: user.name || "",
+                    email: user.email || ""
+                }));
+            } catch (error) {
+                console.error("Error parsing user data:", error);
+            }
+        }
+    }, []);
+    useEffect(() => {
+        if (preSelectedPickupDate) {
+            setFormData(prev => ({ ...prev, pickupDate: preSelectedPickupDate }));
+        }
+        if (preSelectedReturnDate) {
+            setFormData(prev => ({ ...prev, returnDate: preSelectedReturnDate }));
+        }
+    }, [preSelectedPickupDate, preSelectedReturnDate]);
 
 
 
@@ -49,6 +74,27 @@ export default function ReservePage() {
         const selectedCar = mockCars.find((c) => c.id.toString() === formData.carId);
         if (!selectedCar) return alert("Please select a valid car option.");
 
+        const hasConflict = reservations.some(reservation => {
+            // Only check active reservations for the same car
+            if (reservation.carId !== formData.carId || reservation.status !== 'active') {
+                return false;
+            }
+            
+            const newPickup = new Date(formData.pickupDate);
+            const newReturn = new Date(formData.returnDate);
+            const existingPickup = new Date(reservation.pickupDate);
+            const existingReturn = new Date(reservation.returnDate);
+            
+            // Check if date ranges overlap
+            // Overlap occurs if: newPickup <= existingReturn AND newReturn >= existingPickup
+            return (newPickup <= existingReturn && newReturn >= existingPickup);
+        });
+    
+        if (hasConflict) {
+            alert("This car is already reserved during the selected dates. Please choose different dates.");
+            return;
+        }
+        // Add reservation to context
         addReservation({
             name: formData.name,
             email: formData.email,

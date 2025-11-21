@@ -588,7 +588,7 @@ export default function SearchPage() {
                           <span className="text-gray-600">/day</span>
                         </div>
                         <Link 
-                          href={`/reserve?carId=${car.id}`}
+                          href={`/reserve?carId=${car.id}${searchFilters.pickupDate ? `&pickupDate=${searchFilters.pickupDate.toISOString().split('T')[0]}` : ''}${searchFilters.returnDate ? `&returnDate=${searchFilters.returnDate.toISOString().split('T')[0]}` : ''}`}
                           className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
                         >
                           Reserve
