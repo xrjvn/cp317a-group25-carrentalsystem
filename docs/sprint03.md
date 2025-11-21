@@ -51,24 +51,30 @@ This sprint introduced our first real persistent data system. Instead of relying
 This also made Sprint 03 the first sprint where each feature had to work with others instead of standing alone. Changes made on one page now have to show up on all the others, which required more coordination within the team. The result is a system that behaves much more like a real rental platform, with data that stays consistent as the user moves between pages
 
 ---
-## **Sam Oreskovic – SYS-1 (Persistent File Storing for Users and Reservations)**
+## **Sam Oreskovic – SYS-1 (Persistent File Storing for Reservations)**
 
 ### **Overview**
+I primarily focused on persistent file storing for user reservations. I started by creating an api route file called `route.ts`, which allows the system to GET, POST, and DELETE reservations from users. I then updated the `ReservationContext.tsx` file, in order to load the given json file each time the website starts. With these changes, users can now add and view reservations from their profiles without having them reset upon a page refresh, meaning that their changes are saved across sessions.
 
 ### **Files Modified**
+`/src/app/api/reservations/route.ts` - (Created)
+`/src/app/data/reservations.json` - (Created)
+`/src/app/context/ReservationContext.tsx` - (Modified)
 
 ### **Key Work Completed**
-
+- Created a JSON file that accurately stores user reservations
+- Ensured changes persist after reload
+- Rerouted reservation context to call functions based on local storage appropriately
 
 ### **Testing**
 | Case | Input | Expected Result | Actual Result | Result |
 |------|--------|-----------------|----------------|--------|
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
+| Create reservation | Input reservation info and add | Reservations should be added to JSON file | Reservations are listed in JSON file | PASS |
+| Delete reservation | Press cancel button | Reservation should delete from page and JSON file | Reservations are deleted from both | PASS |
+| Access reservations through profile | Open profile page | Reservations should be listed | Reservations are listed on profile page | PASS |
+| Page reload | Refresh browser | Reservations should save after reload | Reservations save and are shown upon reload | PASS |
 
-**Verification:** 
+**Verification:**  Sam
 
 ---
 ## **Arjun Singh – SEC-2 (Persistent Login & Sign-Up & Profile)**
