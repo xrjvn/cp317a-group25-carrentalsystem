@@ -36,9 +36,9 @@ These stories move the project from a front-end demo into something closer to a 
 
 | Story ID | Story Title | Points | Priority | Assigned To | Tasks | Status |
 |----------|-------------|--------|----------|-------------|-------|--------|
-| SYS-1 | Persistent File Store | 5 | High | **PersonX** | Load/save system for reservations & users | *In Progress* |
+| SYS-1 | Persistent File Store | 5 | High | **Sam** | Load/save system for reservations & users | *In Progress* |
 | SEC-2 | Login and Sign Up (persistent) | 5 | High | **Arjun** | Connect login & signup & profile to stored data | *In Progress* |
-| UI-7 | UI Cleanup + Layout Improvements | 3 | Medium | **PersonX** | Improve layout, buttons, spacing, card styling | *In Progress* |
+| UI-7 | UI Cleanup + Layout Improvements | 3 | Medium | **Connor** | Improve layout, buttons, spacing, card styling | *In Progress* |
 | SYS-2 | System-Wide Integration (Sprint Requirement) | 3 | High | **Everyone** | Ensure all features interact with shared persistent state | Ongoing |
 
 ---
@@ -51,7 +51,26 @@ This sprint introduced our first real persistent data system. Instead of relying
 This also made Sprint 03 the first sprint where each feature had to work with others instead of standing alone. Changes made on one page now have to show up on all the others, which required more coordination within the team. The result is a system that behaves much more like a real rental platform, with data that stays consistent as the user moves between pages
 
 ---
+## **Sam Oreskovic – SYS-1 (Persistent File Storing for Users and Reservations)**
 
+### **Overview**
+
+### **Files Modified**
+
+### **Key Work Completed**
+
+
+### **Testing**
+| Case | Input | Expected Result | Actual Result | Result |
+|------|--------|-----------------|----------------|--------|
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+
+**Verification:** 
+
+---
 ## **Arjun Singh – SEC-2 (Persistent Login & Sign-Up & Profile)**
 
 ### **Overview**
