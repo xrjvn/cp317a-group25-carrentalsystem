@@ -4,14 +4,32 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useReservations } from '../context/ReservationContext';
 import { mockCars } from '../data/mockCars';
+import { useEffect, useState } from 'react';
 
 export default function ReservationsPage() {
   const { reservations, updateReservationStatus } = useReservations();
 
-  // Filter active bookings
-  const activeBookings = reservations.filter(r => r.status === 'active');
-  const completedBookings = reservations.filter(r => r.status === 'completed');
-  const cancelledBookings = reservations.filter(r => r.status === 'cancelled');
+  const [currentUser, setCurrentUser] = useState<any>(null);
+
+  useEffect(() => {
+    const u = JSON.parse(localStorage.getItem("currentUser") || "null");
+    setCurrentUser(u);
+  }, []);
+
+  if (!currentUser) {
+    return (
+      <div className="min-h-screen bg-grey-450 text-white p-8">
+        <h1 className="text-3xl font-bold mb-6">My Reservations</h1>
+        <p className="text-gray-300 text-lg">Please log in to view your reservations.</p>
+      </div>
+    );
+  }
+
+  const userReservations = reservations.filter(r => r.email === currentUser.email);
+
+  const activeBookings = userReservations.filter(r => r.status === 'active');
+  const completedBookings = userReservations.filter(r => r.status === 'completed');
+  const cancelledBookings = userReservations.filter(r => r.status === 'cancelled');
 
   return (
     <div className="min-h-screen bg-grey-450 text-white p-8">
