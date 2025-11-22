@@ -45,8 +45,8 @@ export default function ProfilePage() {
 
         <input
           value={user.email}
-          className="w-full border p-2 rounded"
-          onChange={e => setUser({ ...user, email: e.target.value })}
+          className="w-full border p-2 rounded bg-gray-100 cursor-not-allowed"
+          readOnly
         />
 
         <input
