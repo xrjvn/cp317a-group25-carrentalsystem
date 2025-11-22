@@ -114,6 +114,10 @@ Write:
 - Testing Table  
 
 ---
+## ** SYS-2 | System-Wide Integration **
+TEMPORARY info/list of things added
+- name, email, date autofill, sign out
+
 
 ## **PersonX – UI-7 UI Cleanup & Layout Improvements**  
 *(PLACEHOLDER – fill this in)*  
