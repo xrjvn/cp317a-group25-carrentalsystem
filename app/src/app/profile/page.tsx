@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function ProfilePage() {
+  const router = useRouter();
   const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
@@ -21,6 +23,11 @@ export default function ProfilePage() {
     localStorage.setItem("currentUser", JSON.stringify(user));
 
     alert("Profile updated!");
+  };
+
+  const handleSignOut = () => {
+    localStorage.removeItem("currentUser");
+    router.push("/login");
   };
 
   if (!user) return <p>Loading...</p>;
@@ -48,9 +55,17 @@ export default function ProfilePage() {
           onChange={e => setUser({ ...user, license: e.target.value })}
         />
 
-        <button onClick={handleSave} className="bg-blue-600 text-white p-2 rounded">
-          Save Changes
-        </button>
+        <div className="flex justify-between items-center pt-2">
+          <button onClick={handleSave} className="bg-blue-600 text-white p-2 rounded">
+            Save Changes
+          </button>
+          <button 
+            onClick={handleSignOut} 
+            className="bg-red-600 text-white p-2 rounded hover:bg-red-700 transition-colors"
+          >
+            Sign Out
+          </button>
+        </div>
       </div>
     </main>
   );

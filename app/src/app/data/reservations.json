@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "name": "Hayden",
+    "email": "haydengdanski@gmail.com",
+    "carId": "1",
+    "pickupDate": "2025-11-21",
+    "returnDate": "2025-11-27",
+    "id": "1763784362153",
+    "status": "cancelled"
+  },
+  {
+    "name": "Hayden",
+    "email": "haydengdanski@gmail.com",
+    "carId": "5",
+    "pickupDate": "2025-11-22",
+    "returnDate": "2025-11-24",
+    "id": "1763784657330",
+    "status": "cancelled"
+  },
+  {
+    "name": "Hayden",
+    "email": "haydengdanski@gmail.com",
+    "carId": "1",
+    "pickupDate": "2025-11-21",
+    "returnDate": "2025-11-22",
+    "id": "1763786592268",
+    "status": "active"
+  },
+  {
+    "name": "Hayden",
+    "email": "760314@ldcsb.org",
+    "carId": "1",
+    "pickupDate": "2025-11-23",
+    "returnDate": "2025-11-25",
+    "id": "1763786665580",
+    "status": "cancelled"
+  }
+]
