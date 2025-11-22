@@ -119,8 +119,33 @@ TEMPORARY info/list of things added
 - name, email, date autofill, sign out
 
 
-## **PersonX – UI-7 UI Cleanup & Layout Improvements**  
-*(PLACEHOLDER – fill this in)*  
+## **Connor Davison – UI-7 UI Cleanup & Layout Improvements**  
+### **Overview**
+Added a checkout page where reservations are only confirmed under newly added checkout page. Updated the reservations page to prompt users to log in or sign up if they aren’t. 
+
+### **Files Modified**
+ `/src/app/reservations/page.tsx`
+
+ ### **Filed Added **
+ `/src/app/checkout`
+ `/src/app/checkout/page.tsx`
+
+### **Key Work Completed**
+- Added a checkout page to confirm reservations before finalizing.
+- Updated reservations page to prompt users to log in or sign up if not authenticated.
+- Ensured reservations are only confirmed after user approval on the checkout page.
+
+### **Testing**
+| Case | Input | Expected Result | Actual Result | Result |
+|------|--------|-----------------|----------------|--------|
+| Reserve car checkout (not logged in) | Visit Checkout Page | Promt to log in or sign up | Prompt Shown | PASS |
+| Reserve car checkout (logged in) | Fill out reserve form and checkout | Redirects to checkout page | Redirect Works | PASS |
+| Checkout page confirmation | Click confirm reservation | Reservation added and redirects to reservations | Works correctly | PASS |
+| Checkoutpage go back | Click Go Back on checkout page | Returns to previouis page | Returns correctly | PASS |
+| Accessing My Reservation not logged in | Access My Reservations | Tell the User to log in or sign up | Tells the User to log or sign in | PASS |
+
+**Verification:** Connor  
+
 
 ---
 
