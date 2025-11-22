@@ -79,34 +79,21 @@ export default function ReservePage() {
             if (reservation.carId !== formData.carId || reservation.status !== 'active') {
                 return false;
             }
-            
             const newPickup = new Date(formData.pickupDate);
             const newReturn = new Date(formData.returnDate);
             const existingPickup = new Date(reservation.pickupDate);
             const existingReturn = new Date(reservation.returnDate);
-            
             // Check if date ranges overlap
-            // Overlap occurs if: newPickup <= existingReturn AND newReturn >= existingPickup
             return (newPickup <= existingReturn && newReturn >= existingPickup);
         });
-    
+
         if (hasConflict) {
             alert("This car is already reserved during the selected dates. Please choose different dates.");
             return;
         }
-        // Add reservation to context
-        addReservation({
-            name: formData.name,
-            email: formData.email,
-            carId: formData.carId,
-            pickupDate: formData.pickupDate,
-            returnDate: formData.returnDate,
-        });
-        alert(`Reservation confirmed for ${selectedCar.make} ${selectedCar.model}!`);
 
-        // Reset form
-        setFormData({ name: "", email: "", carId: "", pickupDate: "", returnDate: "" });
-
+        // Only redirect to checkout, do not confirm reservation yet
+        router.push(`/checkout?carId=${formData.carId}&pickupDate=${formData.pickupDate}&returnDate=${formData.returnDate}`);
     };
 
     const handleCancel = (index: number) => {
@@ -214,7 +201,7 @@ export default function ReservePage() {
                     type="submit"
                     className="w-full bg-blue-600 hover:bg-blue-700 p-2 rounded font-semibold"
                 >
-                    Confirm Reservation
+                    Checkout
                 </button>
             </form>
 

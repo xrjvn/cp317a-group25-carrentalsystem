@@ -16,11 +16,16 @@ export default function ReservationsPage() {
     setCurrentUser(u);
   }, []);
 
+  //If no user is logged in
   if (!currentUser) {
     return (
-      <div className="min-h-screen bg-grey-450 text-white p-8">
+      <div className="min-h-screen bg-grey-450 text-white p-8 flex flex-col items-center justify-center">
         <h1 className="text-3xl font-bold mb-6">My Reservations</h1>
-        <p className="text-gray-300 text-lg">Please log in to view your reservations.</p>
+        <p className="text-gray-300 text-lg mb-8">Please log in or sign up to view your reservations.</p>
+        <div className="flex gap-6">
+          <Link href="/login" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors">Login</Link>
+          <Link href="/signup" className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors">Sign Up</Link>
+        </div>
       </div>
     );
   }
