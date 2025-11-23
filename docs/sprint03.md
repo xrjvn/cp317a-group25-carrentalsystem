@@ -122,9 +122,11 @@ TEMPORARY info/list of things added
 ## **Connor Davison – UI-7 UI Cleanup & Layout Improvements**  
 ### **Overview**
 Added a checkout page where reservations are only confirmed under newly added checkout page. Updated the reservations page to prompt users to log in or sign up if they aren’t. 
+Added a small graph that shows how much the user is spenidng on which car. Could be implemented for how much the user has spent overall for their past completed cars.
 
 ### **Files Modified**
  `/src/app/reservations/page.tsx`
+ `/src/app/profile/page.tsx`
 
  ### **Filed Added **
  `/src/app/checkout`
@@ -134,6 +136,7 @@ Added a checkout page where reservations are only confirmed under newly added ch
 - Added a checkout page to confirm reservations before finalizing.
 - Updated reservations page to prompt users to log in or sign up if not authenticated.
 - Ensured reservations are only confirmed after user approval on the checkout page.
+- Calculated the users total spending and displays it under progile
 
 ### **Testing**
 | Case | Input | Expected Result | Actual Result | Result |
@@ -143,6 +146,7 @@ Added a checkout page where reservations are only confirmed under newly added ch
 | Checkout page confirmation | Click confirm reservation | Reservation added and redirects to reservations | Works correctly | PASS |
 | Checkoutpage go back | Click Go Back on checkout page | Returns to previouis page | Returns correctly | PASS |
 | Accessing My Reservation not logged in | Access My Reservations | Tell the User to log in or sign up | Tells the User to log or sign in | PASS |
+| Users total reservations cost | Access profile and see cost | Showing the user their total costs | Displays Total Cost | PASS |
 
 **Verification:** Connor  
 
