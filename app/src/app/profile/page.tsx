@@ -130,7 +130,9 @@ export default function ProfilePage() {
       </div>
 
       {/* Spending Summary Box */}
-      <SpendingSummary email={user.email} />
+      <div className="w-full flex justify-center mt-6">
+        <SpendingSummary email={user.email} />
+      </div>
     </main>
   );
 }
@@ -148,19 +150,22 @@ function SpendingSummary({ email }: { email: string }) {
   const totalSpent = spendingByReservation.reduce((sum, r) => sum + r.total, 0);
 
   return (
-    <div className="mt-8 bg-gray-100 p-6 rounded-xl shadow">
-      <h2 className="text-xl font-bold mb-2 text-gray-800">Current Reservation Spending</h2>
-      <p className="mb-4 text-gray-700">Total: <span className="font-bold text-green-600">${totalSpent}</span></p>
-      <div className="space-y-2">
-        {spendingByReservation.map(r => (
-          <div key={r.id} className="flex items-center gap-2">
-            <span className="w-32 text-gray-600">{r.car}</span>
-            <div className="flex-1 h-4 bg-gray-300 rounded">
-              <div style={{ width: `${Math.min(100, r.total / (totalSpent || 1) * 100)}%` }} className="h-4 bg-blue-500 rounded"></div>
+    <div className="bg-gray-100 p-6 rounded-xl shadow w-full max-w-md flex flex-col items-center">
+      <h2 className="text-xl font-bold mb-2 text-gray-800 text-center">Current Reservation Spending</h2>
+      <p className="mb-4 text-gray-700 text-center">Total: <span className="font-bold text-green-600">${totalSpent}</span></p>
+      <div className="space-y-2 w-full flex flex-col items-center">
+        {spendingByReservation.map(r => {
+          const percent = totalSpent ? (r.total / totalSpent) * 100 : 0;
+          return (
+            <div key={r.id} className="flex items-center gap-2 w-full justify-center">
+              <span className="w-32 text-gray-600 text-right">{r.car}</span>
+              <div className="h-4 bg-gray-300 rounded relative" style={{ width: '180px' }}>
+                <div style={{ width: `${percent}%`, minWidth: '12px' }} className="h-4 bg-blue-500 rounded transition-all absolute left-0 top-0"></div>
+              </div>
+              <span className="ml-2 text-gray-800 font-semibold">${r.total}</span>
             </div>
-            <span className="ml-2 text-gray-800 font-semibold">${r.total}</span>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

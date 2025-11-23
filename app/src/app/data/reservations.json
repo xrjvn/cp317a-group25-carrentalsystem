@@ -96,7 +96,7 @@
     "pickupDate": "2025-11-01",
     "returnDate": "2025-11-14",
     "id": "1763924415038",
-    "status": "active"
+    "status": "cancelled"
   },
   {
     "name": "Connor ",
@@ -105,6 +105,15 @@
     "pickupDate": "2025-12-06",
     "returnDate": "2025-12-30",
     "id": "1763924438340",
-    "status": "active"
+    "status": "cancelled"
+  },
+  {
+    "name": "Connor ",
+    "email": "connorjdavison@hotmail.com",
+    "carId": "3",
+    "pickupDate": "2025-10-30",
+    "returnDate": "2025-11-20",
+    "id": "1763927140666",
+    "status": "cancelled"
   }
 ]
