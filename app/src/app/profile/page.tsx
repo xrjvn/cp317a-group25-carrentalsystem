@@ -46,38 +46,86 @@ export default function ProfilePage() {
   }
 
   return (
-    <main className="max-w-xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">My Profile</h1>
+    <main className="min-h-screen bg-gray-50 py-8">
+      <div className="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 className="text-3xl font-bold text-gray-900 mb-8">My Profile</h1>
 
-      <div className="space-y-4 bg-white p-4 rounded shadow">
-        <input
-          value={user.name}
-          className="w-full border p-2 rounded"
-          onChange={e => setUser({ ...user, name: e.target.value })}
-        />
+        <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+          {/* Form Header */}
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 px-6 py-4 border-b border-gray-200">
+            <h2 className="text-lg font-semibold text-gray-800">Profile Information</h2>
+          </div>
 
-        <input
-          value={user.email}
-          className="w-full border p-2 rounded bg-gray-100 cursor-not-allowed"
-          readOnly
-        />
+          <div className="p-6 space-y-6">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                Full Name
+              </label>
+              <input
+                id="name"
+                type="text"
+                value={user.name}
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg 
+                           focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 
+                           transition-all duration-200 bg-white text-gray-900
+                           hover:border-gray-300 shadow-sm hover:shadow-md"
+                onChange={e => setUser({ ...user, name: e.target.value })}
+              />
+            </div>
 
-        <input
-          value={user.license}
-          className="w-full border p-2 rounded"
-          onChange={e => setUser({ ...user, license: e.target.value })}
-        />
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                Email Address
+              </label>
+              <input
+                id="email"
+                type="email"
+                value={user.email}
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg 
+                           bg-gray-100 cursor-not-allowed text-gray-600"
+                readOnly
+              />
+            </div>
 
-        <div className="flex justify-between items-center pt-2">
-          <button onClick={handleSave} className="bg-blue-600 text-white p-2 rounded">
-            Save Changes
-          </button>
-          <button 
-            onClick={handleSignOut} 
-            className="bg-red-600 text-white p-2 rounded hover:bg-red-700 transition-colors"
-          >
-            Sign Out
-          </button>
+            <div>
+              <label htmlFor="license" className="block text-sm font-medium text-gray-700 mb-2">
+                Driver's License Number
+              </label>
+              <input
+                id="license"
+                type="text"
+                value={user.license}
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg 
+                           focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 
+                           transition-all duration-200 bg-white text-gray-900
+                           hover:border-gray-300 shadow-sm hover:shadow-md"
+                onChange={e => setUser({ ...user, license: e.target.value })}
+              />
+            </div>
+
+            <div className="border-t border-gray-200 pt-4">
+              <div className="flex gap-4">
+                <button 
+                  onClick={handleSave} 
+                  className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-3 rounded-lg 
+                             font-semibold shadow-md hover:shadow-lg hover:from-blue-700 hover:to-blue-800 
+                             focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 
+                             transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  Save Changes
+                </button>
+                <button 
+                  onClick={handleSignOut} 
+                  className="flex-1 bg-gradient-to-r from-red-600 to-red-700 text-white px-8 py-3 rounded-lg 
+                             font-semibold shadow-md hover:shadow-lg hover:from-red-700 hover:to-red-800 
+                             focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 
+                             transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  Sign Out
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
