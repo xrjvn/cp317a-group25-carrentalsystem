@@ -105,15 +105,6 @@ My work this sprint focused on connecting the authentication pages and Profile p
 
 ---
 
-## **PersonX – SYS-1 Persistent File Store**  
-*(PLACEHOLDER – fill this in)*  
-Write:  
-- Overview  
-- Files Modified  
-- Implementation Details  
-- Testing Table  
-
----
 ## ** SYS-2 | System-Wide Integration **
 TEMPORARY info/list of things added
 - name, email, date autofill, sign out
