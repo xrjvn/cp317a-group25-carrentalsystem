@@ -627,6 +627,8 @@ Checks if the reservation dates overlaps with existing reservations for the same
 
 For my portion of the sprint, I focused on elevating the user interface design across the Search and Reserve pages. I did this by implementing modern React components and good Tailwind CSS styling. The work done transformed basic HTML form elements into polished, professional UI that provide a more enhanced user experience. These components provide consistent styling and intuitive visual feedback. The implementation involved integrating third-party React libraries such as `react-datepicker` & `react-select`. All the filter dropdowns were replaced with a style `react-select` and date inputs were upgraded to `react-datepicker` with custom calendar styling. Both pages now have consistent form input styling with focus states (blue borders and rings), hover effects, gradient designs, improved visual hierarchy through the section headers and dividers.
 
+Some issues I ran into was styling the third-party react components, these libraries used their own CSS system rather than the Tailwind. I overcame this by injecting custom CSS styles to internal class names (ie. `.react-datepicker__day`, `.react-datepicker__header`). Another issue was Z-Index and layering issues. Components would often get clipped by containers or appearing behind other layers, solved by setting z-index values.
+
 ### **Files Modified**
 `/app/src/app/search/page.tsx`
 `/app/src/app/reserve/page.tsx`
