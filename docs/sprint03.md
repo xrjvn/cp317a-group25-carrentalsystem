@@ -569,7 +569,7 @@ function SpendingSummary({ email }: { email: string }) {
 | Story ID | Test Description | Method | Result | Verified By |
 |----------|------------------|--------|--------|--------------|
 | SEC-2 | Auth uses persistent user store | Manual UI test | Complete | Arjun |
-| SYS-1 | Reservations/users load/save correctly | Manual | Pending | PersonX |
+| SYS-1 | Reservations/users load/save correctly | Manual | Complete | Sam |
 | UI-7 | UI improvements applied consistently | Visual/manual | Pending | PersonX |
 | SYS-2 | Features interact with shared persistent state | Manual | Ongoing | Team |
 
