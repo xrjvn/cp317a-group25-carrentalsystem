@@ -209,7 +209,7 @@ TEMPORARY info/list of things added
 ## **Connor Davison – UI-7 UI Cleanup & Layout Improvements**  
 ### **Overview**
 Added a checkout page where reservations are only confirmed under newly added checkout page. Updated the reservations page to prompt users to log in or sign up if they aren’t. 
-Added a small graph that shows how much the user is spenidng on which car. Could be implemented for how much the user has spent overall for their past completed cars.
+Added a small graph that shows how much the user is spenidng on which car. Could be implemented for how much the user has spent overall for their past completed cars. Added a sign out button to remove the current user from local stroage
 
 ### **Files Modified**
  `/src/app/reservations/page.tsx`
@@ -221,7 +221,7 @@ Added a small graph that shows how much the user is spenidng on which car. Could
 
 
 **Code Snippet:**  
-Ceckout Page:
+Checkout Page:
 ```tsx
 "use client";
 
@@ -365,6 +365,20 @@ function SpendingSummary({ email }: { email: string }) {
   );
 }
 ```
+ Sign out feature: implements a button in the profile page to sign out the current user in local storage and redirects them to sign back in.
+ ```
+   const handleSignOut = () => {
+    localStorage.removeItem("currentUser");
+    router.push("/login");
+  };
+    <button 
+    onClick={handleSignOut} 
+    className="bg-red-600 text-white p-2 rounded hover:bg-red-700 transition-colors"
+    >
+    Sign Out
+    </button>
+    </div>
+ ```
  
 
 ### **Key Work Completed**
@@ -372,6 +386,7 @@ function SpendingSummary({ email }: { email: string }) {
 - Updated reservations page to prompt users to log in or sign up if not authenticated.
 - Ensured reservations are only confirmed after user approval on the checkout page.
 - Calculated the users total spending and displays it under progile
+- Added sign out feature to log out the current user and redirect them to log in
 
 ### **Testing**
 | Case | Input | Expected Result | Actual Result | Result |
@@ -382,6 +397,7 @@ function SpendingSummary({ email }: { email: string }) {
 | Checkoutpage go back | Click Go Back on checkout page | Returns to previouis page | Returns correctly | PASS |
 | Accessing My Reservation not logged in | Access My Reservations | Tell the User to log in or sign up | Tells the User to log or sign in | PASS |
 | Users total reservations cost | Access profile and see cost | Showing the user their total costs | Displays Total Cost | PASS |
+|sign out| *clicks sign out button* | local storage clears the current user and then redirects to login page | removes correctly and redirects|PASS|
 
 **Verification:** Connor  
 
