@@ -362,9 +362,79 @@ export default function ProfilePage() {
 
 ---
 
-## ** SYS-2 | System-Wide Integration **
-TEMPORARY info/list of things added
-- name, email, date autofill, sign out
+## ** Hayden Gdanski, SYS-2 | System-Wide Integration **
+### **Overview**
+Added an autofill feature that reads the currentuser from local storage and autofills the name and email if a user is logged in.
+Added autofill dates from the search page so that the pickup and return dates are passed over. Added an overlap detection for dates so that if the same car is booked during the same time as another person it makes u choose a different date.
+
+
+### **Files Modified**
+reserve/page.tsx
+search/page.tsx
+
+**Code Snippet:**  
+Autofill name and email  to reserve from local storage
+```
+    useEffect(() => {
+        const currentUser = localStorage.getItem("currentUser");
+        if (currentUser) {
+            try {
+                const user = JSON.parse(currentUser);
+                setFormData(prev => ({
+                    ...prev,
+                    name: user.name || "",
+                    email: user.email || ""
+                }));
+            } catch (error) {
+                console.error("Error parsing user data:", error);
+            }
+        }
+    }, []);
+```
+Autofills dates from the search page
+```
+ useEffect(() => {
+        if (preSelectedPickupDate) {
+            setFormData(prev => ({ ...prev, pickupDate: preSelectedPickupDate }));
+            setPickupDate(new Date(preSelectedPickupDate));
+        }
+        if (preSelectedReturnDate) {
+            setFormData(prev => ({ ...prev, returnDate: preSelectedReturnDate }));
+            setReturnDate(new Date(preSelectedReturnDate));
+        }
+    }, [preSelectedPickupDate, preSelectedReturnDate]);
+```
+Checks if the reservation dates overlaps with existing reservations for the same car to prevent double booking
+```
+ const hasConflict = reservations.some(reservation => {
+            // Only check active reservations for the same car
+            if (reservation.carId !== formData.carId || reservation.status !== 'active') {
+                return false;
+            }
+            const newPickup = new Date(formData.pickupDate);
+            const newReturn = new Date(formData.returnDate);
+            const existingPickup = new Date(reservation.pickupDate);
+            const existingReturn = new Date(reservation.returnDate);
+            // Check if date ranges overlap
+            return (newPickup <= existingReturn && newReturn >= existingPickup);
+        });
+
+        if (hasConflict) {
+            alert("This car is already reserved during the selected dates. Please choose different dates.");
+            return;
+        }
+```
+
+### **Testing**
+| Case | Input | Expected Result | Actual Result | Result |
+|------|--------|-----------------|----------------|--------|
+|check reserve page with a logged in user |localStorage.currentUser = {name: "Hayden", email: "haydengdanski@gmail.com"} | auto fills the name and email in the reserve page | data is filled out| PASS|
+|check reserve page with no user logged in| no current user in the local storage| data should be unfilled and ask to enter information| Data is empty and asks to be filled | PASS|
+|overlapped date| new reservation pick up and return date equal an existing date| user gets an alert and has to enter in a different date that isnt currently in use| alert displayed and promted to try a different date| PASS|
+|no overlap different same car| Reservation date pick up and return date picked that does not already exist | no error, user is prompted to checkout page and allows booking | booking allowed|PASS|
+|Pass dates from search to reserve page| click reserve with selected pickup and return dates on the searchpage| dates should be automatically filled out in the reserve page| pickup date and return date are pre filled| PASS|
+|missing dates| no pick or return date is entered| user has to refill in the data and enter dates| user gets prompted to go back to the reserve page and has to re-enter data| PASS|
+
 
 
 ## **Connor Davison – UI-7 UI Cleanup & Layout Improvements**  
