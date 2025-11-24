@@ -38,7 +38,7 @@ These stories move the project from a front-end demo into something closer to a 
 |----------|-------------|--------|----------|-------------|-------|--------|
 | SYS-1 | Persistent File Store | 5 | High | **Sam** | Load/save system for reservations & users | *Completed* |
 | SEC-2 | Login and Sign Up (persistent) | 5 | High | **Arjun** | Connect login & signup & profile to stored data | *Completed* |
-| UI-7 | UI Cleanup + Layout Improvements | 3 | Medium | **Connor** | Improve layout, buttons, spacing, card styling | *Completed* |
+| UI-7 | UI Cleanup + Layout Improvements | 3 | Medium | **Connor** | Improve layout, buttons, spacing, card styling, enchance interfaces and pages | *Completed* |
 | SYS-2 | System-Wide Integration | 3 | High | **Everyone** | Ensure all features interact with shared persistent state | *Completed* |
 |UI-8| (React & Tailwind CSS UI Implementation)|3| Medium | **Khush** | improved visuals, pages now stay consistent with their layout and inputting style. Auto-fill features now work across the app and help users complete forms more efficiently | *Completed* |
 
@@ -365,8 +365,7 @@ export default function ProfilePage() {
 
 ## ** Hayden Gdanski,  | Reservation Form Enhancements & Data Validation **
 ### **Overview**
-Added an autofill feature that reads the currentuser from local storage and autofills the name and email if a user is logged in.
-Added autofill dates from the search page so that the pickup and return dates are passed over. Added an overlap detection for dates so that if the same car is booked during the same time as another person it makes u choose a different date.
+
 
 
 ### **Files Modified**
@@ -374,67 +373,12 @@ reserve/page.tsx
 search/page.tsx
 
 **Code Snippet:**  
-Autofill name and email  to reserve from local storage
-```
-    useEffect(() => {
-        const currentUser = localStorage.getItem("currentUser");
-        if (currentUser) {
-            try {
-                const user = JSON.parse(currentUser);
-                setFormData(prev => ({
-                    ...prev,
-                    name: user.name || "",
-                    email: user.email || ""
-                }));
-            } catch (error) {
-                console.error("Error parsing user data:", error);
-            }
-        }
-    }, []);
-```
-Autofills dates from the search page
-```
- useEffect(() => {
-        if (preSelectedPickupDate) {
-            setFormData(prev => ({ ...prev, pickupDate: preSelectedPickupDate }));
-            setPickupDate(new Date(preSelectedPickupDate));
-        }
-        if (preSelectedReturnDate) {
-            setFormData(prev => ({ ...prev, returnDate: preSelectedReturnDate }));
-            setReturnDate(new Date(preSelectedReturnDate));
-        }
-    }, [preSelectedPickupDate, preSelectedReturnDate]);
-```
-Checks if the reservation dates overlaps with existing reservations for the same car to prevent double booking
-```
- const hasConflict = reservations.some(reservation => {
-            // Only check active reservations for the same car
-            if (reservation.carId !== formData.carId || reservation.status !== 'active') {
-                return false;
-            }
-            const newPickup = new Date(formData.pickupDate);
-            const newReturn = new Date(formData.returnDate);
-            const existingPickup = new Date(reservation.pickupDate);
-            const existingReturn = new Date(reservation.returnDate);
-            // Check if date ranges overlap
-            return (newPickup <= existingReturn && newReturn >= existingPickup);
-        });
 
-        if (hasConflict) {
-            alert("This car is already reserved during the selected dates. Please choose different dates.");
-            return;
-        }
-```
 
 ### **Testing**
 | Case | Input | Expected Result | Actual Result | Result |
 |------|--------|-----------------|----------------|--------|
-|check reserve page with a logged in user |localStorage.currentUser = {name: "Hayden", email: "haydengdanski@gmail.com"} | auto fills the name and email in the reserve page | data is filled out| PASS|
-|check reserve page with no user logged in| no current user in the local storage| data should be unfilled and ask to enter information| Data is empty and asks to be filled | PASS|
-|overlapped date| new reservation pick up and return date equal an existing date| user gets an alert and has to enter in a different date that isnt currently in use| alert displayed and promted to try a different date| PASS|
-|no overlap different same car| Reservation date pick up and return date picked that does not already exist | no error, user is prompted to checkout page and allows booking | booking allowed|PASS|
-|Pass dates from search to reserve page| click reserve with selected pickup and return dates on the searchpage| dates should be automatically filled out in the reserve page| pickup date and return date are pre filled| PASS|
-|missing dates| no pick or return date is entered| user has to refill in the data and enter dates| user gets prompted to go back to the reserve page and has to re-enter data| PASS|
+
 Verification: Hayden
 
 
@@ -442,7 +386,8 @@ Verification: Hayden
 ## **Connor Davison – UI-7 UI Cleanup & Layout Improvements**  
 ### **Overview**
 Added a checkout page where reservations are only confirmed under newly added checkout page. Updated the reservations page to prompt users to log in or sign up if they aren’t. 
-Added a small graph that shows how much the user is spenidng on which car. Could be implemented for how much the user has spent overall for their past completed cars. Added a sign out button to remove the current user from local stroage
+Added a small graph that shows how much the user is spenidng on which car. Could be implemented for how much the user has spent overall for their past completed cars. Added a sign out button to remove the current user from local stroage. Added an autofill feature that reads the currentuser from local storage and autofills the name and email if a user is logged in.
+Added autofill dates from the search page so that the pickup and return dates are passed over. Added an overlap detection for dates so that if the same car is booked during the same time as another person it makes u choose a different date.
 
 ### **Files Modified**
  `/src/app/reservations/page.tsx`
@@ -612,6 +557,57 @@ function SpendingSummary({ email }: { email: string }) {
     </button>
     </div>
  ```
+Autofill name and email  to reserve from local storage
+```
+    useEffect(() => {
+        const currentUser = localStorage.getItem("currentUser");
+        if (currentUser) {
+            try {
+                const user = JSON.parse(currentUser);
+                setFormData(prev => ({
+                    ...prev,
+                    name: user.name || "",
+                    email: user.email || ""
+                }));
+            } catch (error) {
+                console.error("Error parsing user data:", error);
+            }
+        }
+    }, []);
+```
+Autofills dates from the search page
+```
+ useEffect(() => {
+        if (preSelectedPickupDate) {
+            setFormData(prev => ({ ...prev, pickupDate: preSelectedPickupDate }));
+            setPickupDate(new Date(preSelectedPickupDate));
+        }
+        if (preSelectedReturnDate) {
+            setFormData(prev => ({ ...prev, returnDate: preSelectedReturnDate }));
+            setReturnDate(new Date(preSelectedReturnDate));
+        }
+    }, [preSelectedPickupDate, preSelectedReturnDate]);
+```
+Checks if the reservation dates overlaps with existing reservations for the same car to prevent double booking
+```
+ const hasConflict = reservations.some(reservation => {
+            // Only check active reservations for the same car
+            if (reservation.carId !== formData.carId || reservation.status !== 'active') {
+                return false;
+            }
+            const newPickup = new Date(formData.pickupDate);
+            const newReturn = new Date(formData.returnDate);
+            const existingPickup = new Date(reservation.pickupDate);
+            const existingReturn = new Date(reservation.returnDate);
+            // Check if date ranges overlap
+            return (newPickup <= existingReturn && newReturn >= existingPickup);
+        });
+
+        if (hasConflict) {
+            alert("This car is already reserved during the selected dates. Please choose different dates.");
+            return;
+        }
+```
  
 
 ### **Key Work Completed**
@@ -631,8 +627,14 @@ function SpendingSummary({ email }: { email: string }) {
 | Accessing My Reservation not logged in | Access My Reservations | Tell the User to log in or sign up | Tells the User to log or sign in | PASS |
 | Users total reservations cost | Access profile and see cost | Showing the user their total costs | Displays Total Cost | PASS |
 |sign out| *clicks sign out button* | local storage clears the current user and then redirects to login page | removes correctly and redirects|PASS|
+|check reserve page with a logged in user |localStorage.currentUser = {name: "Hayden", email: "haydengdanski@gmail.com"} | auto fills the name and email in the reserve page | data is filled out| PASS|
+|check reserve page with no user logged in| no current user in the local storage| data should be unfilled and ask to enter information| Data is empty and asks to be filled | PASS|
+|overlapped date| new reservation pick up and return date equal an existing date| user gets an alert and has to enter in a different date that isnt currently in use| alert displayed and promted to try a different date| PASS|
+|no overlap different same car| Reservation date pick up and return date picked that does not already exist | no error, user is prompted to checkout page and allows booking | booking allowed|PASS|
+|Pass dates from search to reserve page| click reserve with selected pickup and return dates on the searchpage| dates should be automatically filled out in the reserve page| pickup date and return date are pre filled| PASS|
+|missing dates| no pickup or return date is entered| user has to refill in the data and enter dates| user gets prompted to go back to the reserve page and has to re-enter data| PASS|
 
-**Verification:** Connor  
+**Verification:** Connor, Hayden 
 
 ---
 
@@ -910,7 +912,7 @@ const selectStyles = {
 | Form input focus states | Click on any text input field | Input shows blue border and ring effect on focus | Input displays blue border and ring on focus | PASS |
 
 
-**SYS-2**
+**UI-7**
 ### **Testing**
 | Case | Input | Expected Result | Actual Result | Result |
 |------|--------|-----------------|----------------|--------|
@@ -932,7 +934,7 @@ const selectStyles = {
 ## **Sprint Summary**
 - Sprint 3 focused on making data save locally instead of being reset every load. Because of this users are now able to successfully sign in, sign up and signout.
 - Users are now able to sign in and have their data stored locally and is consistent across the whole app
-- Also getting closer to a fully developed app with a checkout page and rendering the search and research page to be more visually appealing.
+- Also getting closer to a fully developed app with a checkout page and rendering the search and research page to be more visually appealing. With enhanced features like reservation overlapping for booking, and quality of life additions
 - Overall we took a big step closer to having a fully functioning and socially acceptable app with persistent data, improved visuals and a more reliable service.
 
 
@@ -945,6 +947,6 @@ All members updated **Group25-Blog.xlsx** with hours and tasks.
 - `Group25-Sprint03.pdf`
 - `Group25-ProductBacklog.xlsx` (updated)  
 - `Group25-Blog.xlsx` (updated)  
-- 1–3 minute demo video
+- 2–4 minute demo video
 
-**Deadline:** Sunday, November 16th, 2025 @ 11:59 PM
+**Deadline:** Sunday, November 23th, 2025 @ 11:59 PM
