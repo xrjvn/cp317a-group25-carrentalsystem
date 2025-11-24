@@ -434,6 +434,7 @@ Checks if the reservation dates overlaps with existing reservations for the same
 |no overlap different same car| Reservation date pick up and return date picked that does not already exist | no error, user is prompted to checkout page and allows booking | booking allowed|PASS|
 |Pass dates from search to reserve page| click reserve with selected pickup and return dates on the searchpage| dates should be automatically filled out in the reserve page| pickup date and return date are pre filled| PASS|
 |missing dates| no pick or return date is entered| user has to refill in the data and enter dates| user gets prompted to go back to the reserve page and has to re-enter data| PASS|
+Verification: Hayden
 
 
 
