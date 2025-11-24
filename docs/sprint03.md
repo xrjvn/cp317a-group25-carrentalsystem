@@ -564,6 +564,36 @@ function SpendingSummary({ email }: { email: string }) {
 
 ---
 
+## **Khush Patel – UI-8 (React & Tailwind CSS UI Implementation)**
+
+### **Overview**
+
+For my portion of the sprint, I focused on elevating the user interface design across the Search and Reserve pages. I did this by implementing modern React components and good Tailwind CSS styling. The work done transformed basic HTML form elements into polished, professional UI that provide a more enhanced user experience. These components provide consistent styling and intuitive visual feedback. The implementation involved integrating third-party React libraries such as `react-datepicker` & `react-select`. All the filter dropdowns were replaced with a style `react-select` and date inputs were upgraded to `react-datepicker` with custom calendar styling.
+
+Both pages now feature consistent form input styling with focus states (blue borders and rings), hover effects, gradient button designs, and improved visual hierarchy through section headers and dividers. The forms are organized into logical sections (Personal Information, Car Selection, Date Range) within card-based layouts with gradient headers. Additionally, the Reserve page includes auto-fill functionality that pre-populates user data from localStorage and URL parameters, while maintaining date validation to ensure return dates are after pickup dates. All styling follows a cohesive blue-themed design system (#3b82f6) with responsive grid layouts that adapt to different screen sizes, creating a unified and modern interface across the car rental system's core user-facing pages.
+
+### **Files Modified**
+`/app/src/app/search/page.tsx`
+`/app/src/app/reserve/page.tsx`
+
+### **Key Work Completed**
+- React DatePicker Itegration; for date selection, custom Tailwind CSS styling for calendar popup
+- React Select Dropdowns; replaced native selects, custom selectStyles configuration, are used in Search & Reserve page
+- Form Input Enhancements; consistent styling, focus states with bue borders, rings, spacing, hover effects.
+- Button & Layout Improvement; responsive grid layouts, enhanced selected car preview card, hover effects
+
+### **Testing**
+| Case | Input | Expected Result | Actual Result | Result |
+|------|--------|-----------------|----------------|--------|
+| Date picker displays calendar popup	| Click on pickup date field | Calendar popup appears with styled appearance | Calendar appears with blue-themed styling | PASS |
+| Date picker enforces minimum date	 | Try to select past date | Past dates are disabled/grayed out | Past dates are disabled and cannot be selected | PASS |
+| React Select dropdown styling | Click on car type dropdown | Dropdown opens with styled menu matching design system | Dropdown displays with blue accents and proper styling | PASS |
+| Form input focus states | Click on any text input field | Input shows blue border and ring effect on focus | Input displays blue border and ring on focus | PASS |
+
+**Verification:**  Khush
+
+---
+
 ## 4. Testing Summary
 
 | Story ID | Test Description | Method | Result | Verified By |
