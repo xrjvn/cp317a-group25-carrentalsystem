@@ -363,7 +363,7 @@ export default function ProfilePage() {
 
 ---
 
-## ** Hayden Gdanski, SYS-2 | System-Wide Integration **
+## ** Hayden Gdanski,  | Reservation Form Enhancements & Data Validation **
 ### **Overview**
 Added an autofill feature that reads the currentuser from local storage and autofills the name and email if a user is logged in.
 Added autofill dates from the search page so that the pickup and return dates are passed over. Added an overlap detection for dates so that if the same car is booked during the same time as another person it makes u choose a different date.
