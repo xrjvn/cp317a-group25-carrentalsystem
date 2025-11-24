@@ -38,7 +38,7 @@ These stories move the project from a front-end demo into something closer to a 
 |----------|-------------|--------|----------|-------------|-------|--------|
 | SYS-1 | Persistent File Store | 5 | High | **Sam** | Load/save system for reservations & users | *Completed* |
 | SEC-2 | Login and Sign Up (persistent) | 5 | High | **Arjun** | Connect login & signup & profile to stored data | *Completed* |
-| UI-7 | UI Cleanup + Layout Improvements | 3 | Medium | **Connor** | Improve layout, buttons, spacing, card styling, enchance interfaces and pages | *Completed* |
+| UI-7 | UI Cleanup +  Improvements | 3 | Medium | **Connor** + **Hayden**| Improve, buttons, spacing, card styling, enchanced interfaces and pages | *Completed* |
 | SYS-2 | System-Wide Integration | 3 | High | **Everyone** | Ensure all features interact with shared persistent state | *Completed* |
 |UI-8| (React & Tailwind CSS UI Implementation)|3| Medium | **Khush** | improved visuals, pages now stay consistent with their layout and inputting style. Auto-fill features now work across the app and help users complete forms more efficiently | *Completed* |
 
@@ -363,27 +363,10 @@ export default function ProfilePage() {
 
 ---
 
-## ** Hayden Gdanski,  | Reservation Form Enhancements & Data Validation **
-### **Overview**
 
 
 
-### **Files Modified**
-reserve/page.tsx
-search/page.tsx
-
-**Code Snippet:**  
-
-
-### **Testing**
-| Case | Input | Expected Result | Actual Result | Result |
-|------|--------|-----------------|----------------|--------|
-
-Verification: Hayden
-
-
-
-## **Connor Davison – UI-7 UI Cleanup & Layout Improvements**  
+## **Connor Davison + Hayden Gdanski – UI-7 UI Cleanup &  Improvements**  
 ### **Overview**
 Added a checkout page where reservations are only confirmed under newly added checkout page. Updated the reservations page to prompt users to log in or sign up if they aren’t. 
 Added a small graph that shows how much the user is spenidng on which car. Could be implemented for how much the user has spent overall for their past completed cars. Added a sign out button to remove the current user from local stroage. Added an autofill feature that reads the currentuser from local storage and autofills the name and email if a user is logged in.
