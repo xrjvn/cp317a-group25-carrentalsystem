@@ -582,6 +582,193 @@ Both pages now feature consistent form input styling with focus states (blue bor
 - Form Input Enhancements; consistent styling, focus states with bue borders, rings, spacing, hover effects.
 - Button & Layout Improvement; responsive grid layouts, enhanced selected car preview card, hover effects
 
+### **Code Snippets**
+
+#### **1. React Select Custom Styling Configuration**
+
+```typescript
+// Custom Tailwind-styled theme for react-select
+const selectStyles = {
+  control: (base: any, state: any) => ({
+    ...base,
+    border: '2px solid #e5e7eb',
+    borderRadius: '0.5rem',
+    boxShadow: state.isFocused ? '0 0 0 3px rgba(59, 130, 246, 0.1)' : '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    padding: '0.125rem 0.5rem',
+    minHeight: '42px',
+    fontSize: '0.875rem',
+    '&:hover': {
+      border: '2px solid #d1d5db',
+      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+    },
+    borderColor: state.isFocused ? '#3b82f6' : '#e5e7eb',
+  }),
+  option: (base: any, state: any) => ({
+    ...base,
+    backgroundColor: state.isSelected
+      ? '#3b82f6'
+      : state.isFocused
+      ? '#eff6ff'
+      : 'white',
+    color: state.isSelected ? 'white' : '#111827',
+    padding: '0.75rem 1rem',
+    cursor: 'pointer',
+    '&:active': {
+      backgroundColor: '#3b82f6',
+      color: 'white',
+    },
+  }),
+  menu: (base: any) => ({
+    ...base,
+    borderRadius: '0.5rem',
+    boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+    border: '1px solid #e5e7eb',
+    marginTop: '0.25rem',
+    zIndex: 9999,
+  }),
+};
+```
+
+#### **2. React Select Dropdown Implementation**
+
+```typescript
+// Car Type dropdown example from Search page
+<Select
+  id="carType"
+  instanceId="carType-select"
+  value={carTypeOptions.find(opt => opt.value === searchFilters.carType) || null}
+  onChange={(option) => handleSelectChange('carType', option)}
+  options={carTypeOptions}
+  styles={selectStyles}
+  placeholder="All Types"
+  isClearable={false}
+  isSearchable={false}
+  menuPortalTarget={typeof document !== 'undefined' ? document.body : null}
+  menuPosition="fixed"
+  className="react-select-container"
+  classNamePrefix="react-select"
+/>
+
+// Car selection dropdown from Reserve page
+<Select
+  id="carId"
+  instanceId="carId-select"
+  value={carOptions.find(opt => opt.value === formData.carId) || null}
+  onChange={(option) => {
+    const value = option?.value || '';
+    setFormData(prev => ({ ...prev, carId: value }));
+  }}
+  options={carOptions}
+  styles={selectStyles}
+  placeholder="Select a Car"
+  isClearable={false}
+  isSearchable={false}
+  menuPortalTarget={typeof document !== 'undefined' ? document.body : null}
+  menuPosition="fixed"
+/>
+```
+
+#### **3. React DatePicker Custom CSS Styling**
+
+```typescript
+<style dangerouslySetInnerHTML={{__html: `
+  /* Style react-datepicker with Tailwind */
+  .react-datepicker__input-container input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    padding-right: 3rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.5rem;
+    background-color: white;
+    color: #111827;
+    font-size: 1rem;
+    transition: all 0.2s;
+  }
+  
+  .react-datepicker__input-container input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+  
+  .react-datepicker__header {
+    background-color: #eff6ff;
+    border-bottom: 1px solid #e5e7eb;
+    border-top-left-radius: 0.75rem;
+    border-top-right-radius: 0.75rem;
+    padding-top: 0.75rem;
+  }
+  
+  .react-datepicker__day--selected,
+  .react-datepicker__day--keyboard-selected {
+    background-color: #3b82f6 !important;
+    color: white !important;
+    font-weight: 600;
+  }
+  
+  .react-datepicker__day:hover {
+    background-color: #dbeafe;
+    border-radius: 0.375rem;
+  }
+`}} />
+```
+
+#### **4. DatePicker Component Implementation**
+
+```typescript
+<div className="relative">
+  <label htmlFor="pickupDate" className="block text-sm font-medium text-gray-700 mb-2">
+    Pickup Date
+  </label>
+  <div className="relative">
+    {/* Calendar icon */}
+    <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none z-10">
+      <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+    </div>
+    <DatePicker
+      id="pickupDate"
+      selected={pickupDate}
+      onChange={(date: Date | null) => {
+        setPickupDate(date);
+        setFormData(prev => ({ 
+          ...prev, 
+          pickupDate: date ? date.toISOString().split('T')[0] : '' 
+        }));
+      }}
+      minDate={new Date()}
+      dateFormat="yyyy-MM-dd"
+      placeholderText="Select pickup date"
+      className="w-full px-4 py-3 pr-12 border-2 border-gray-200 rounded-lg 
+                 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 
+                 transition-all duration-200 bg-white text-gray-900
+                 hover:border-gray-300 shadow-sm hover:shadow-md
+                 cursor-pointer"
+      wrapperClassName="w-full"
+    />
+  </div>
+</div>
+```
+
+#### **5. Form Input Styling with Tailwind CSS**
+
+```typescript
+<input
+  type="text"
+  id="name"
+  name="name"
+  placeholder="Enter your full name"
+  value={formData.name}
+  onChange={handleChange}
+  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg 
+             focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 
+             transition-all duration-200 bg-white text-gray-900
+             hover:border-gray-300 shadow-sm hover:shadow-md"
+  required
+/>
+```
+
 ### **Testing**
 | Case | Input | Expected Result | Actual Result | Result |
 |------|--------|-----------------|----------------|--------|
