@@ -385,22 +385,6 @@ function SpendingSummary({ email }: { email: string }) {
 
 **Verification:** Connor  
 
-
----
-
-## **PersonX – Integration Testing & Reservation UI Adjustments**  
-*(PLACEHOLDER – fill this in)*  
-
----
-
-## **PersonX – Modify Reservation polishing for persistence compatibility**  
-*(PLACEHOLDER – fill this in)*  
-
----
-
-## **PersonX – System Integration / Error Handling**  
-*(PLACEHOLDER – fill this in)*  
-
 ---
 
 ## 4. Testing Summary
