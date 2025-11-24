@@ -36,14 +36,14 @@ export async function GET() {
 //Post new reservation
 export async function POST(req: Request) {
   try {
-    const body = await req.json(); // { name, email, carId, pickupDate, returnDate, id? }
+    const body = await req.json();
 
     const reservations = loadReservations();
 
     const newReservation = {
       ...body,
       id: body.id ?? Date.now().toString(),
-      status: "active",              // ⭐ new reservations are active
+      status: "active",
     };
 
     reservations.push(newReservation);
@@ -58,7 +58,7 @@ export async function POST(req: Request) {
 //Update a reservation (cancel, modify, etc.)
 export async function PUT(req: Request) {
   try {
-    const { id, status, ...rest } = await req.json(); // we care about id + status
+    const { id, status, ...rest } = await req.json();
 
     let reservations = loadReservations();
 
@@ -67,7 +67,7 @@ export async function PUT(req: Request) {
         ? {
             ...r,
             ...rest,
-            status: status ?? r.status,  // ⭐ update status if provided
+            status: status ?? r.status,
           }
         : r
     );
