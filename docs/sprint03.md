@@ -863,18 +863,77 @@ const selectStyles = {
 
 ---
 
-## 5. Sprint Review & Reflection
+## 5. Sprint Summary, Review & Reflection
 
-### **Completed**
-- Persistent user storage connected to login/sign-up/profile
-- 
-- 
-- 
-- 
+**SYS-1**
+### **Testing**
+| Case | Input | Expected Result | Actual Result | Result |
+|------|--------|-----------------|----------------|--------|
+| Create reservation | Input reservation info and add | Reservations should be added to JSON file | Reservations are listed in JSON file | PASS |
+| Delete reservation | Press cancel button | Reservation should delete from page and JSON file | Reservations are deleted from both | PASS |
+| Access reservations through profile | Open profile page | Reservations should be listed | Reservations are listed on profile page | PASS |
+| Page reload | Refresh browser | Reservations should save after reload | Reservations save and are shown upon reload | PASS |
 
-### **Reflection**
-(fill this in)
----
+
+
+**SEC-2**
+### **Testing**
+| Case | Input | Expected Result | Actual Result | Result |
+|------|--------|-----------------|----------------|--------|
+| Create new account | Email, password, license | User saved to persistent store | Works correctly | PASS |
+| Login with stored user | Valid credentials | Redirect to profile | Works correctly | PASS |
+| Update profile info | Edit any field | Stored user object updated | Works correctly | PASS |
+| Page reload | Refresh browser | User still logged in | Works correctly | PASS |
+
+
+**UI-7**
+### **Testing**
+| Case | Input | Expected Result | Actual Result | Result |
+|------|--------|-----------------|----------------|--------|
+| Reserve car checkout (not logged in) | Visit Checkout Page | Prompt to log in or sign up | Prompt Shown | PASS |
+| Reserve car checkout (logged in) | Fill out reserve form and checkout | Redirects to checkout page | Redirect Works | PASS |
+| Checkout page confirmation | Click confirm reservation | Reservation added and redirects to reservations | Works correctly | PASS |
+| Checkoutpage go back | Click Go Back on checkout page | Returns to previous page | Returns correctly | PASS |
+| Accessing My Reservation not logged in | Access My Reservations | Tell the User to log in or sign up | Tells the User to log or sign in | PASS |
+| Users total reservations cost | Access profile and see cost | Showing the user their total costs | Displays Total Cost | PASS |
+|sign out| *clicks sign out button* | local storage clears the current user and then redirects to login page | removes correctly and redirects|PASS|
+
+
+**UI-8**
+### **Testing**
+| Case | Input | Expected Result | Actual Result | Result |
+|------|--------|-----------------|----------------|--------|
+| Date picker displays calendar popup	| Click on pickup date field | Calendar popup appears with styled appearance | Calendar appears with blue-themed styling | PASS |
+| Date picker enforces minimum date	 | Try to select past date | Past dates are disabled/grayed out | Past dates are disabled and cannot be selected | PASS |
+| React Select dropdown styling | Click on car type dropdown | Dropdown opens with styled menu matching design system | Dropdown displays with blue accents and proper styling | PASS |
+| Form input focus states | Click on any text input field | Input shows blue border and ring effect on focus | Input displays blue border and ring on focus | PASS |
+
+
+**SYS-2**
+### **Testing**
+| Case | Input | Expected Result | Actual Result | Result |
+|------|--------|-----------------|----------------|--------|
+|check reserve page with a logged in user |localStorage.currentUser = {name: "Hayden", email: "haydengdanski@gmail.com"} | auto fills the name and email in the reserve page | data is filled out| PASS|
+|check reserve page with no user logged in| no current user in the local storage| data should be unfilled and ask to enter information| Data is empty and asks to be filled | PASS|
+|overlapped date| new reservation pick up and return date equal an existing date| user gets an alert and has to enter in a different date that isnt currently in use| alert displayed and promted to try a different date| PASS|
+|no overlap different same car| Reservation date pick up and return date picked that does not already exist | no error, user is prompted to checkout page and allows booking | booking allowed|PASS|
+|Pass dates from search to reserve page| click reserve with selected pickup and return dates on the searchpage| dates should be automatically filled out in the reserve page| pickup date and return date are pre filled| PASS|
+|missing dates| no pick or return date is entered| user has to refill in the data and enter dates| user gets prompted to go back to the reserve page and has to re-enter data| PASS|
+
+
+## **Review and Reflection**
+- SYS-1 (Persistent Storage) We’ve added a storage system so now user accounts and reservations are now saved locally. This allows data to stay consistent across the whole app.
+- SEC -2 (Login, Sign-up, Profile with Saved Data) Login and sign up are fully functional and connected to persistent storage. All Personal information is saved locally when navigation throughout the whole app.
+- UI-7 (UI Cleanup) A new checkout page was added to make the app more efficient which has the user confirm whether or not they want to proceed with the transaction-(coming soon) showing their picked reservation and the cost of it overall. Various buttons such as the Login and or Signup button appear if users try to access pages or information while not signed in.
+- UI-8 (React & Tailwind CSS UI Implementation) Improved visuals of the major pages such as the Search and Reservation page. Both pages now stay consistent with their layout and inputting style. Auto-fill features now work across the app and help users complete forms more efficiently.
+- SYS-2 (System-Wide Integration) All reservations actions such as, adding a reservation, modifying a reservation or cancelling one now updates the persistent data. Which ever information inputted by the user is now saved system wide.
+
+## **Sprint Summary**
+- Sprint 3 focused on making data save locally instead of being reset every load. Because of this users are now able to successfully sign in, sign up and signout.
+- Users are now able to sign in and have their data stored locally and is consistent across the whole app
+- Also getting closer to a fully developed app with a checkout page and rendering the search and research page to be more visually appealing.
+- Overall we took a big step closer to having a fully functioning and socially acceptable app with persistent data, improved visuals and a more reliable service.
+
 
 ## **6. Team Blog (Update)**
 All members updated **Group25-Blog.xlsx** with hours and tasks.
