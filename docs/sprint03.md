@@ -189,6 +189,167 @@ My work this sprint focused on connecting the authentication pages and Profile p
 - Connected the Profile page so users can edit their stored information  
 - Ensured changes persist after reload
 
+### **Code Snippet:**
+```
+/src/lib/persistence.ts
+export async function loadUsers() {
+  if (typeof window === "undefined") return [];
+  const stored = localStorage.getItem("users");
+  return stored ? JSON.parse(stored) : [];
+}
+
+export async function saveUsers(users: any[]) {
+  if (typeof window === "undefined") return;
+  localStorage.setItem("users", JSON.stringify(users));
+}
+
+export async function findUserByEmail(email: string) {
+  const users = await loadUsers();
+  return users.find((u: any) => u.email === email);
+}
+
+export async function addUser(user: any) {
+  const users = await loadUsers();
+  users.push(user);
+  await saveUsers(users);
+}
+
+
+/src/app/signup/page.tsx
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { addUser, findUserByEmail } from "../../lib/persistence";
+
+export default function SignupPage() {
+  const router = useRouter();
+
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+    license: ""
+  });
+
+  const handleChange = (e: any) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSignup = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const existing = await findUserByEmail(form.email);
+    if (existing) {
+      alert("Email already registered.");
+      return;
+    }
+
+    await addUser(form);
+
+    alert("Account created!");
+    router.push("/login");
+  };
+
+  return (
+    <main className="max-w-sm mx-auto p-6">
+      <h1 className="text-2xl font-bold mb-4">Sign Up</h1>
+
+      <form onSubmit={handleSignup} className="space-y-4">
+        <input name="name" placeholder="Name" className="w-full p-2 border rounded" onChange={handleChange}/>
+        <input name="email" placeholder="Email" className="w-full p-2 border rounded" onChange={handleChange}/>
+        <input name="password" placeholder="Password" type="password" className="w-full p-2 border rounded" onChange={handleChange}/>
+        <input name="license" placeholder="Driver’s License" className="w-full p-2 border rounded" onChange={handleChange}/>
+
+        <button className="w-full bg-green-600 text-white p-2 rounded">
+          Create Account
+        </button>
+      </form>
+    </main>
+  );
+}
+
+
+/src/app/login/page.tsx
+import { redirect } from "next/navigation";
+import { findUserByEmail } from "../../lib/persistence";
+
+export default function LoginPage() {
+
+  async function handleLogin(formData: FormData) {
+    "use server";
+
+    const email = String(formData.get("email"));
+    const password = String(formData.get("password"));
+
+    const user = await findUserByEmail(email);
+
+    if (!user) throw new Error("No user found with that email.");
+    if (user.password !== password) throw new Error("Incorrect password.");
+
+    localStorage.setItem("currentUser", JSON.stringify(user));
+
+    redirect("/profile");
+  }
+
+  return (
+    <main className="max-w-sm mx-auto p-6">
+      <h1 className="text-2xl font-bold mb-4">Login</h1>
+
+      <form action={handleLogin} className="space-y-4">
+        <input type="email" name="email" required className="w-full border p-2 rounded" placeholder="Email"/>
+        <input type="password" name="password" required className="w-full border p-2 rounded" placeholder="Password"/>
+        <button className="w-full bg-blue-600 text-white p-2 rounded">Login</button>
+      </form>
+    </main>
+  );
+}
+
+
+/src/app/profile/page.tsx
+import { useState, useEffect } from "react";
+import { loadUsers, saveUsers } from "../../lib/persistence";
+
+export default function ProfilePage() {
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("currentUser");
+    if (stored) setUser(JSON.parse(stored));
+  }, []);
+
+  const handleSave = async () => {
+    if (!user) return;
+
+    const users = await loadUsers();
+    const updated = users.map((u: any) =>
+      u.email === user.email ? user : u
+    );
+
+    await saveUsers(updated);
+    localStorage.setItem("currentUser", JSON.stringify(user));
+
+    alert("Profile updated!");
+  };
+
+  if (!user) return <p>Loading...</p>;
+
+  return (
+    <main className="max-w-xl mx-auto p-6">
+      <h1 className="text-2xl font-bold mb-4">My Profile</h1>
+
+      <div className="space-y-4 bg-white p-4 rounded shadow">
+        <input value={user.name} className="w-full border p-2 rounded" onChange={e => setUser({ ...user, name: e.target.value })}/>
+        <input value={user.email} className="w-full border p-2 rounded" onChange={e => setUser({ ...user, email: e.target.value })}/>
+        <input value={user.license} className="w-full border p-2 rounded" onChange={e => setUser({ ...user, license: e.target.value })}/>
+
+        <button onClick={handleSave} className="bg-blue-600 text-white p-2 rounded">
+          Save Changes
+        </button>
+      </div>
+    </main>
+  );
+}
+```
+
 ### **Testing**
 | Case | Input | Expected Result | Actual Result | Result |
 |------|--------|-----------------|----------------|--------|
