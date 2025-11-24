@@ -36,10 +36,10 @@ These stories move the project from a front-end demo into something closer to a 
 
 | Story ID | Story Title | Points | Priority | Assigned To | Tasks | Status |
 |----------|-------------|--------|----------|-------------|-------|--------|
-| SYS-1 | Persistent File Store | 5 | High | **Sam** | Load/save system for reservations & users | *In Progress* |
-| SEC-2 | Login and Sign Up (persistent) | 5 | High | **Arjun** | Connect login & signup & profile to stored data | *In Progress* |
-| UI-7 | UI Cleanup + Layout Improvements | 3 | Medium | **Connor** | Improve layout, buttons, spacing, card styling | *In Progress* |
-| SYS-2 | System-Wide Integration (Sprint Requirement) | 3 | High | **Everyone** | Ensure all features interact with shared persistent state | Ongoing |
+| SYS-1 | Persistent File Store | 5 | High | **Sam** | Load/save system for reservations & users | *Completed* |
+| SEC-2 | Login and Sign Up (persistent) | 5 | High | **Arjun** | Connect login & signup & profile to stored data | *Completed* |
+| UI-7 | UI Cleanup + Layout Improvements | 3 | Medium | **Connor** | Improve layout, buttons, spacing, card styling | *Completed* |
+| SYS-2 | System-Wide Integration | 3 | High | **Everyone** | Ensure all features interact with shared persistent state | Completed |
 
 ---
 
