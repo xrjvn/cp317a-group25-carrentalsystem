@@ -932,4 +932,4 @@ All members updated **Group25-Blog.xlsx** with hours and tasks.
 - `Group25-Blog.xlsx` (updated)  
 - 2–4 minute demo video
 
-**Deadline:** Sunday, November 23th, 2025 @ 11:59 PM
+**Deadline:** Sunday, November 23rd, 2025 @ 11:59 PM
