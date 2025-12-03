@@ -28,3 +28,34 @@ The system will be developed following the **Scrum methodology** with tracked co
 /backlog   → Product backlog files (draft + sprint planning)
 /blog      → Team blog (Excel updates throughout the term)
 ```
+
+# Setup Instructions
+
+1. **Clone the repository:**
+   ```powershell
+   git clone https://github.com/xrjvn/cp317a-group25-carrentalsystem.git
+   cd cp317a-group25-carrentalsystem
+   ```
+
+2. **Install dependencies:**
+   - Navigate to the `app` directory:
+     ```powershell
+     cd app
+     ```
+   - Install Node.js dependencies:
+     ```powershell
+     npm install
+     ```
+
+3. **Run the development server:**
+   ```powershell
+   npm run dev
+   ```
+   - Open the provided local URL in your browser http://localhost:3000.
+   ```
+
+# Environment Requirements
+
+- **Node.js** (v18 or newer recommended)
+- **npm** (comes with Node.js)
+- Windows, macOS, or Linux
