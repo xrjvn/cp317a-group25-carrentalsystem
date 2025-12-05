@@ -65,8 +65,7 @@ cd cp317a-group25-carrentalsystem
      ```
 
 3. **Run the development server:**
-   ``Once running, open the provided local URL in your browser http://localhost:3000
-   ```
+   Once running, open the provided local URL in your browser http://localhost:3000
 
 # Environment Requirements
 
