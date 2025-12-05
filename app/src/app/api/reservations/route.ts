@@ -85,7 +85,7 @@ export async function PUT(req: Request) {
 export async function DELETE(req: Request) {
     const { id } = await req.json();
     let reservations = loadReservations();
-    reservations = reservations.filter(r => r.id !== id);
+    reservations = reservations.filter((r: any) => r.id !== id);
     saveReservations(reservations);
 
     return NextResponse.json({ message: "Reservation removed" });
